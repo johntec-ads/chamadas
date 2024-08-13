@@ -1,12 +1,12 @@
 
 import Nome from '../Nome';
 
-function Alunos ( { nome, mudaNome } ) {
+function Alunos (  ) {
   return (
 
     <div>
       <h2> Component Alunos </h2>
-      <Nome nome={ nome } mudaNome={ mudaNome } />
+      <Nome />
     </div>
   );
 }

@@ -1,11 +1,11 @@
 
-function Nome( { nome, mudaNome } ) {
+function Nome(  ) {
   return (
 
     <div>
-      <span style={{color: '#FF0000'}} >Bem vindo: { nome } </span>
+      <span style={{color: '#FF0000'}} >Bem vindo: </span>
       <br/>
-      <button onClick={() => mudaNome('Johntec.ads') } >Trocar nome</button>
+      
     </div>    
 
   );
