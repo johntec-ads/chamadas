@@ -4,7 +4,7 @@ import Alunos from './components/Alunos';
 import UserProvider from './context/user';
 
 function App () {
-  const [ nomeAluno, setNomeAluno ] = useState( 'John Marcelo' )
+  
 
 
   return (
