@@ -1,0 +1,12 @@
+1 - Resetar os estilos - index.css
+
+CRIANDO PROJETO:
+2 - Configurar navegação de páginas:
+  a - pasta assets para imagens.
+  b - pasta SignIn (login).
+  c - pasta SignUp (Cadastro).
+
+CRIANDO ROTAS:
+3 - Bibliotécas:
+  a - npm instal react-router-dom
+  
