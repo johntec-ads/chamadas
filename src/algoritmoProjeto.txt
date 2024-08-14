@@ -9,4 +9,12 @@ CRIANDO PROJETO:
 CRIANDO ROTAS:
 3 - Bibliotécas:
   a - npm instal react-router-dom
-  
+  b - pasta routes.
+  c - Component RoutesApp
+    c.1 - import Routes e Route dom
+    react-router-dom.
+  d - Component App 
+    d.1 import BrouserRouter do RRD e 
+    o component RoutesApp.
+    d.2 Roteando e renderizando Component RouterApp 
+    com BrowserRouter
