@@ -22,6 +22,11 @@ CRIANDO ROTAS:
 TELA DE LOGIN:
 4 - Component SignIn
   a - criar style.css
-  b - estilizar o component.
+  b - 
   c - importar img logo
+  d - importar useState para os valores dos inputs.
+  e - Criação dos estados 'state'.
+  f - Configuração dos inputs.
+  g - importar Link do RRD.
+  h - estilizar o component.
   
