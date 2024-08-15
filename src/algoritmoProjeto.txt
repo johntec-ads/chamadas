@@ -23,4 +23,5 @@ TELA DE LOGIN:
 4 - Component SignIn
   a - criar style.css
   b - estilizar o component.
+  c - importar img logo
   
