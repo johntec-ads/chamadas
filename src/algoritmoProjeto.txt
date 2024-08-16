@@ -33,4 +33,21 @@ TELA DE LOGIN:
   TELA DE REGISTRO
 5 - Componet signUp
   a - import img Logo
+  b - copia codigo SignIn
+  c - copia signin.css
+  d - copia input para Nome.
+  e - edita codigo.
+
+  CRIA COMPONENTE DASHBOARD
+6 - Dentro de pages
+  a - Cria pasta Dashboard.
+  b - cria index.js.
+  c - cria Component Dashboard
+
+
   
+
+
+  
+
+
