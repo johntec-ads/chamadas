@@ -30,3 +30,7 @@ TELA DE LOGIN:
   g - importar Link do RRD.
   h - estilizar o component.
   
+  TELA DE REGISTRO
+5 - Componet signUp
+  a - import img Logo
+  
