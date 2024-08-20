@@ -44,6 +44,18 @@ TELA DE LOGIN:
   b - cria index.js.
   c - cria Component Dashboard
 
+  FIREBASE CONFIG.
+7 - Pasta services
+  a - Cria firebaseConections.js
+  b - Cria novo projeto firebase.
+  c - import a cont firebaseConfig p/
+  firebaseConection.js .
+  d - Realiza os import de :
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { Firestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
+
 
   
 
