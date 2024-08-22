@@ -72,7 +72,7 @@ import { getStorage } from 'firebase/storage';
   9 - contextapi
     a -  Dentro de src, cria-se uma pasta 
     contexts ,dentro da pasta criamos o arquivo
-    alth.js 
+    auth.js 
 
 
   
