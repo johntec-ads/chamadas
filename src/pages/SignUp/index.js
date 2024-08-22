@@ -8,7 +8,16 @@ import './signup.css'
 export default function SignUp () {
   const [ email, setEmail ] = useState( '' );
   const [ password, setPassword ] = useState( '' );
-  const [ name, setName ] = useState('');
+  const [ name, setName ] = useState( '' );
+
+  function hundleSubmit ( e ) {
+    e.preventDefault()
+    if ( name !== '' && email !== '' && password !== '' ) {
+      alert('Fazer Cadastro')
+
+    }
+
+  }
 
   return (
     <div className='container-center' >
@@ -16,7 +25,8 @@ export default function SignUp () {
         <div className='login-area' >
           <img src={ logo } alt='Logo do sistema de chamadas' />
         </div>
-        <form>
+
+        <form onSubmit={ hundleSubmit } >
           <h1> Nova conta </h1>
 
           <input
@@ -36,7 +46,7 @@ export default function SignUp () {
             placeholder='digite sua senha'
             value={ password }
             onChange={ ( e ) => setPassword( e.target.value ) }
-          />         
+          />
           <button type='submit'>Cadastrar</button>
         </form>
         <Link to='/' >Já possui uma conta ? Faça login.</Link>
