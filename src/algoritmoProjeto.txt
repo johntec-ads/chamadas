@@ -57,7 +57,13 @@ import { Firestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 
-  
+  CADASTRO E LOGIN
+8 - SignUp
+  a - Atribui ao element de formulário 'form'
+   um evento de  onSubmit={} 
+    1.0 Cria function "handleSubmit()" para submiter
+    o formulário à executar algo.
+    1.2 
 
 
   
