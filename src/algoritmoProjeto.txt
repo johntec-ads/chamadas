@@ -94,6 +94,16 @@ COMPONENT APP
   a -  Envolver as rotas 'RoutesApp' com o 
   'AuthProvider'
 
+contextApi
+1 - Criando function de login no
+contextApi.
+  a -  exportando a function, pelo
+  AuthContext.Provider.
+
+COMPONENT SignIn
+  1 - import do arquivo auth da pasta 
+  contexts
+
 
 
 

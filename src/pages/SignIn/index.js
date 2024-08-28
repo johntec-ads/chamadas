@@ -1,12 +1,18 @@
-import { useState } from 'react'
+/* useContext : Hook usado para consumo de contexto */
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.png'
+
+import  { AuthContext } from '../../contexts/auth' /* Import do contextApi */
+
 import './signin.css'
 
 
 export default function SignIn () {
   const [ email, setEmail ] = useState( '' );
   const [ password, setPassword ] = useState( '' );
+
+  const { signIn} = useContext( AuthContext )/* import da function signIn */
 
   return (
     <div className='container-center' >
@@ -27,7 +33,7 @@ export default function SignIn () {
             placeholder='digite sua senha'
             value={ password }
             onChange={ ( e ) => setPassword( e.target.value ) }
-          />         
+          />
           <button type='submit'>Acessar</button>
         </form>
         <Link to='/register' >Criar uma conta </Link>

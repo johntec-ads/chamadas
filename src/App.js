@@ -10,8 +10,8 @@ function App () {
   return (
 
     <BrowserRouter >
-      <AuthProvider>
-        <RoutesApp />
+      <AuthProvider>{/* context api */}
+        <RoutesApp />{/* roteando a páginas */}
       </AuthProvider>
     </BrowserRouter >
 
