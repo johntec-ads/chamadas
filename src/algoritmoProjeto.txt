@@ -103,6 +103,9 @@ contextApi.
 COMPONENT SignIn
   1 - import do arquivo auth da pasta 
   contexts
+  2 -  function handleSingIn para login com 
+  email e password
+
 
 
 

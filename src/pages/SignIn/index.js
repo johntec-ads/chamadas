@@ -3,7 +3,7 @@ import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 
-import  { AuthContext } from '../../contexts/auth' /* Import do contextApi */
+import { AuthContext } from '../../contexts/auth' /* Import do contextApi */
 
 import './signin.css'
 
@@ -12,7 +12,12 @@ export default function SignIn () {
   const [ email, setEmail ] = useState( '' );
   const [ password, setPassword ] = useState( '' );
 
-  const { signIn} = useContext( AuthContext )/* import da function signIn */
+  const { signIn } = useContext( AuthContext )/* import da function signIn */
+
+  function handleSingIn (e) {
+    e.preventDefault()    
+
+  }
 
   return (
     <div className='container-center' >
@@ -20,7 +25,8 @@ export default function SignIn () {
         <div className='login-area' >
           <img src={ logo } alt='Logo do sistema de chamadas' />
         </div>
-        <form>
+
+        <form onSubmit={handleSingIn} >
           <h1> Entrar </h1>
           <input
             type='text'
