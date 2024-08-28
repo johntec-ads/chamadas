@@ -14,8 +14,14 @@ export default function SignIn () {
 
   const { signIn } = useContext( AuthContext )/* import da function signIn */
 
-  function handleSingIn (e) {
+
+  function handleSignIn (e) {
     e.preventDefault()    
+
+    if(email !== ''  && password !== '' ) {
+      signIn();
+
+    }
 
   }
 
@@ -26,7 +32,7 @@ export default function SignIn () {
           <img src={ logo } alt='Logo do sistema de chamadas' />
         </div>
 
-        <form onSubmit={handleSingIn} >
+        <form onSubmit={handleSignIn} >
           <h1> Entrar </h1>
           <input
             type='text'
