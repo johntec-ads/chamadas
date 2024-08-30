@@ -1,9 +1,10 @@
 import { useState, createContext, useEffect } from 'react';
 
 export const AuthContext = createContext( {} );/* Inicializando
-o contexto com objeto vazio */
+ e exportando o contexto com objeto vazio */
 
-function AuthProvider ( { children} ) {/* parâmetro filho para 
+/* component provedor de cotexto */
+ function AuthProvider ( { children} ) {/* parâmetro filho para 
   repassar dados para todos os componentes */
   const [ user, setUser ] = useState(null);
 
@@ -18,7 +19,7 @@ function AuthProvider ( { children} ) {/* parâmetro filho para
     /* provedor de contexto */
     <AuthContext.Provider
       value={{
-        signed: !!user,/* '!!' convert a state em boleano */
+        signed: !!user,/* '!!' convert a state em boleano false */
         user,
         signIn /* exportando a function para outros components */
       }}    

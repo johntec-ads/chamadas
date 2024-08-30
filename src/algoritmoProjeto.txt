@@ -25,9 +25,9 @@ TELA DE LOGIN:
   b - 
   c - importar img logo
   d - importar useState para os valores dos inputs.
-  e - Criação dos estados 'state'.
+  e - Criação dos estados 'state'.'password e email'
   f - Configuração dos inputs.
-  g - importar Link do RRD.
+  g - importar Link do ReactRouterDom.
   h - estilizar o component.
   
   TELA DE REGISTRO
@@ -69,36 +69,38 @@ import { getStorage } from 'firebase/storage';
     estão diferentes de vazio.
 
     CRIANDO CONTEXT API
-  9 - contextapi
+  9 - contextapi:
     a -  Dentro de src, cria-se uma pasta 
     contexts ,dentro da pasta criamos o arquivo
     auth.js .
-  b - importar do React {useState, createContext,
-  useEffect}.
+  b - import {useState, createContext,
+  useEffect} from 'react' .
   c - Inicializar e  exportar o contexto
   com um objeto vazio.
-  d -  Criar um component
-  que será o provedor de 
-  contexto.
-  e - Passa um value ao AuthContext.
-  Provider, para receber as proprs 
-  necessárias e repassa-las em seguida
-  f - Cria a state user, e dentro do
-  value, criou-se uma props que faz uma
-  verificação, e convert o valor para 
-  true ou false se usuário estiver logado
+  d -  Criar um component 'AuthProvider'
+  que será o provedor de contexto
+  através do parametro  filho 'children'.
+  (return in)
+  e - Passa um value ao AuthContext.Provider, 
+  para receber as proprs necessárias 
+  e repassa-las em seguida
+  (return out)
+  f - Cria a state user,
+  g - Dentro do value, cria-se uma propriedade 
+  'signed' que verifica "!!user" e convert o valor 
+  para true/false, se user estiver logado
   ou não;
 
-COMPONENT APP 
+COMPONENT App
   10 - Importar o contexto AuthProvider
   a -  Envolver as rotas 'RoutesApp' com o 
   'AuthProvider'
 
-contextApi
-1 - Criando function de login no
-contextApi.
-  a -  exportando a function, pelo
-  AuthContext.Provider.
+contextApi:
+1 - Criando function de login "signIn"
+que recebe os param email e password.
+  a -  exporto a function através do "value" 
+  dentro do  <AuthContext.Provider>.
 
 COMPONENT SignIn
   1 - import do arquivo auth da pasta 
