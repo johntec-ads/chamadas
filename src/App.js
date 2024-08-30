@@ -5,7 +5,7 @@ import RoutesApp from './routes'
 /* Importando o contexto do arquivo auth.js*/
 import AuthProvider from './contexts/auth'
 
-function App () {
+function App () { 
 
   return (
 

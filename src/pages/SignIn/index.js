@@ -1,11 +1,10 @@
 /* useContext : Hook usado para consumo de contexto */
 import { useState, useContext } from 'react';
-import { Link } from 'react-router-dom'
+import './signin.css';
+
 import logo from '../../assets/logo.png'
-
+import { Link } from 'react-router-dom'
 import { AuthContext } from '../../contexts/auth' /* Import do contextApi */
-
-import './signin.css'
 
 
 export default function SignIn () {
@@ -14,12 +13,11 @@ export default function SignIn () {
 
   const { signIn } = useContext( AuthContext )/* import da function signIn */
 
-
   function handleSignIn (e) {
     e.preventDefault()    
 
     if(email !== ''  && password !== '' ) {
-      signIn();
+      signIn( email, password   );
 
     }
 
