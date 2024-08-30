@@ -16,7 +16,7 @@ export default function SignIn () {
   function handleSignIn (e) {
     e.preventDefault()    
 
-    if(email !== ''  && password !== '' ) {
+    if(email !== ''  && password !== '' ) {/* Condição para dados preenchidos */
       signIn( email, password   );
 
     }
