@@ -13,7 +13,7 @@ export default function SignUp () {
   const [ name, setName ] = useState( '' );
   
 
-
+/* Obtendo e importando o signUp do auth.js */
   const { signUp } = useContext( AuthContext )
 
   function hundleSubmit ( e ) {

@@ -116,17 +116,19 @@ CADASTRAR USUÁRIO:
   2 - Importa-lo no AuthContext.Provider.
   
 COMPONENT SignUp
-1 - Import{useContext}
-2 - Import{AuthContext}
+1 - Import{useContext} do 'react'
+2 - Import{AuthContext} do arquivo 'auth'
 3 - Declara useContext e importa
 o metodo signUp do auth.js
-4 - Atribui o signUp para o hundleSubmit
+4 - Atribui o signUp ao metodo hundleSubmit
+com os parametros, email, password e name.
 
 AUTH.JS
 lODING DE ESPERA
-1 - Criar useState(loadingAuth)
+1 - Declara useState(loadingAuth)
 2 - import firebase{auth, db}
-
+3- import createUserWithEmailAndPassword do 'firebase/auth'
+4 - import doc, getDoc, setDoc do 'firebase/firestore'
 
 
 

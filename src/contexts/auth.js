@@ -1,5 +1,7 @@
 import { useState, createContext, useEffect } from 'react';
-import { auth, db } from '../services/firebaseConections'
+import { auth, db } from '../services/firebaseConections';
+import { createUserWithEmailAndPassword } from  'firebase/auth';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 export const AuthContext = createContext( {} );/* Inicializando
  e exportando o contexto com objeto vazio */
@@ -8,7 +10,7 @@ export const AuthContext = createContext( {} );/* Inicializando
  function AuthProvider ( { children} ) {/* parâmetro filho para 
   repassar dados para todos os componentes */
   const [ user, setUser ] = useState(null);
-  const [loadingAuth, setLoadingAuth] = useState(false)
+  const [loadingAuth, setLoadingAuth] = useState(false);
 
   function signIn(email, password) {
     console.log(email);
