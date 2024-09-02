@@ -108,6 +108,25 @@ COMPONENT SignIn
   2 -  function handleSingIn para login com 
   email e password
 
+CADASTRAR USUÁRIO:
+  AUTH.JS
+  1 - Criar metodo signUp que 
+  recebe como param, email, password,
+  name. 
+  2 - Importa-lo no AuthContext.Provider.
+  
+COMPONENT SignUp
+1 - Import{useContext}
+2 - Import{AuthContext}
+3 - Declara useContext e importa
+o metodo signUp do auth.js
+4 - Atribui o signUp para o hundleSubmit
+
+AUTH.JS
+lODING DE ESPERA
+1 - Criar useState(loadingAuth)
+2 - import firebase{auth, db}
+
 
 
 
