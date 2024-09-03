@@ -12,6 +12,7 @@ export const AuthContext = createContext( {} );/* Inicializando
   const [ user, setUser ] = useState(null);
   const [loadingAuth, setLoadingAuth] = useState(false);
 
+
   function signIn(email, password) {
     console.log(email);
     console.log(password);
@@ -33,7 +34,7 @@ export const AuthContext = createContext( {} );/* Inicializando
         user,
         /* export metodos para outros components */
         signIn,
-        signUp ,
+        signUp
 
       }}    
     

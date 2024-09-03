@@ -14,7 +14,7 @@ export default function SignUp () {
   
 
 /* Obtendo e importando o signUp do auth.js */
-  const { signUp } = useContext( AuthContext )
+  const {signUp} = useContext( AuthContext )
 
   function hundleSubmit ( e ) {
     e.preventDefault()

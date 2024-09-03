@@ -69,7 +69,7 @@ import { getStorage } from 'firebase/storage';
     estão diferentes de vazio.
 
     CRIANDO CONTEXT API
-  9 - contextapi:
+9 - contextapi:
     a -  Dentro de src, cria-se uma pasta 
     contexts ,dentro da pasta criamos o arquivo
     auth.js .
@@ -92,44 +92,44 @@ import { getStorage } from 'firebase/storage';
   ou não;
 
 COMPONENT App
-  10 - Importar o contexto AuthProvider
+10 - Importar o contexto AuthProvider
   a -  Envolver as rotas 'RoutesApp' com o 
   'AuthProvider'
 
 contextApi:
-1 - Criando function de login "signIn"
+11 - Criando function de login "signIn"
 que recebe os param email e password.
   a -  exporto a function através do "value" 
   dentro do  <AuthContext.Provider>.
 
 COMPONENT SignIn
-  1 - import do arquivo auth da pasta 
+12 - import do arquivo auth da pasta 
   contexts
-  2 -  function handleSingIn para login com 
+  a -  function handleSingIn para login com 
   email e password
 
 CADASTRAR USUÁRIO:
-  AUTH.JS
+13 - AUTH.JS
   1 - Criar metodo signUp que 
   recebe como param, email, password,
   name. 
   2 - Importa-lo no AuthContext.Provider.
   
-COMPONENT SignUp
-1 - Import{useContext} do 'react'
-2 - Import{AuthContext} do arquivo 'auth'
-3 - Declara useContext e importa
-o metodo signUp do auth.js
-4 - Atribui o signUp ao metodo hundleSubmit
-com os parametros, email, password e name.
+14 - COMPONENT SignUp
+  1 - Import{useContext} do 'react'
+  2 - Import{AuthContext} do arquivo 'auth'
+  3 - Declara useContext e importa
+  o metodo signUp do auth.js
+  4 - Atribui o signUp ao metodo hundleSubmit
+  com os parametros, email, password e name.
 
 AUTH.JS
-lODING DE ESPERA
-1 - Declara useState(loadingAuth)
-2 - import firebase{auth, db}
-3- import createUserWithEmailAndPassword do 'firebase/auth'
-4 - import doc, getDoc, setDoc do 'firebase/firestore'
-
+15 - lOADING DE ESPERA
+  1 - Declara useState(loadingAuth)
+  2 - import firebase{auth, db}
+  3- import createUserWithEmailAndPassword do 'firebase/auth'
+  4 - import doc, getDoc, setDoc do 'firebase/firestore'
+  5 - 
 
 
 
