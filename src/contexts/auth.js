@@ -20,8 +20,30 @@ export const AuthContext = createContext( {} );/* Inicializando
   }
 
   /* Cadastro novo user */
-  function signUp(email, password, name) {//Param de retorno
-    console.log(name)
+  async function signUp(email, password, name) {//Param de retorno
+    setLoadingAuth(true);
+
+    await createUserWithEmailAndPassword(auth, email, password)
+    .then(async (value) => {
+      let uid = value.user.uid
+
+      await setDoc(doc(db, "users", uid), {
+        nome: name,
+        avatarUrl: null 
+      })
+      .then(() => {
+        alert('Cadastrado com sucesso')
+        setLoadingAuth(false);
+      })
+
+    })
+    .catch((error) => {
+      console.log(error);
+      setLoadingAuth(false);
+
+    })
+
+
 
   }
 
