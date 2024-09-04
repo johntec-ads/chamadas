@@ -129,10 +129,15 @@ AUTH.JS
   2 - import firebase{auth, db}
   3- import createUserWithEmailAndPassword do 'firebase/auth'
   4 - import doc, getDoc, setDoc do 'firebase/firestore'
-  5 - 
-
-
-
+  
+  SignUp Cadastro
+  5 - Acrescenta o async ao metodo sugnUp
+  6 - State setLoadingAuth recebe true informando
+  o inicio do Cadastro
+  7 - wait createUserWithEmailAndPassword(authm
+  email, senha)
+  8 - Promise retorna o value com os dados
+  do user.
   
 
 

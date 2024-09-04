@@ -19,12 +19,13 @@ export const AuthContext = createContext( {} );/* Inicializando
     alert('LOGADO COM SUCESSO!')
   }
 
-  /* Cadastro novo user */
+  /* Cadastro de novo user */
   async function signUp(email, password, name) {//Param de retorno
-    setLoadingAuth(true);
+    setLoadingAuth(true);/* Informar o início do cadastro */
 
+    /* Criando novo usuário com email e senha no firebase */
     await createUserWithEmailAndPassword(auth, email, password)
-    .then(async (value) => {
+    .then(async (value) => {//Retorna a promessa de um novo user
       let uid = value.user.uid
 
       await setDoc(doc(db, "users", uid), {
@@ -35,7 +36,6 @@ export const AuthContext = createContext( {} );/* Inicializando
         alert('Cadastrado com sucesso')
         setLoadingAuth(false);
       })
-
     })
     .catch((error) => {
       console.log(error);
