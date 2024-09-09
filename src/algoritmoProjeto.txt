@@ -163,7 +163,16 @@ AUTH.JS
   2 - Declara a const navigate obtendo
    o Hook useNavigate()
   3 - Stância o navigate('/dashboard) dentro do metodo signUp
-  4 - Salvando o user em localStorage
-  
+  4 - function storageUser para salvar 
+  os dados do user no localStorage .
+  5 - Stanciando dentro do signUp, abaixo do
+  setUser(), o storageUser(data)
+
+LOGANDO USUÁRIO
+  SignIn
+1 -  Import do firebase/auth o signInWithEmailAndPassword
+ Ao click do user
+2 - Invoca no signIn setLoadingAuth(true)
+3 - async-await signInWithEmailAndPassword(auth,email,password)
 
 
