@@ -1,10 +1,11 @@
-import { useState, useContext } from 'react'
-import logo from '../../assets/logo.png'
-import { Link } from 'react-router-dom'
+import { useState, useContext } from 'react';
+import logo from '../../assets/logo.png';
+import { Link } from 'react-router-dom';
 
-import { AuthContext } from '../../contexts/auth'
+import { AuthContext } from '../../contexts/auth';
 
-import './signup.css'
+import './signup.css';
+
 
 
 export default function SignUp () {
@@ -14,14 +15,18 @@ export default function SignUp () {
   
 
 /* Obtendo e importando o signUp do auth.js */
-  const {signUp} = useContext( AuthContext )
+  const {signUp,loadingAuth } = useContext( AuthContext )
 
-  function hundleSubmit ( e ) {
+  async function hundleSubmit ( e ) {
     e.preventDefault()
     if ( name !== '' && email !== '' && password !== '' ) {
-      signUp(email, password, name)
-
+    await signUp(email, password, name)
     }
+    /* johnjohn */
+    /* Apagando os estados */
+    setEmail('');
+    setPassword('');
+    setName('');
 
   }
 
@@ -53,7 +58,12 @@ export default function SignUp () {
             value={ password }
             onChange={ ( e ) => setPassword( e.target.value ) }
           />
-          <button type='submit'>Cadastrar</button>
+          <button type='submit'>
+            { loadingAuth ? 'Carregando...' : 
+              'Cadastrar'
+            }
+          </button>
+        
         </form>
         <Link to='/' >Já possui uma conta ? Faça login.</Link>
       </div>

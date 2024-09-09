@@ -134,10 +134,36 @@ AUTH.JS
   5 - Acrescenta o async ao metodo sugnUp
   6 - State setLoadingAuth recebe true informando
   o inicio do Cadastro
-  7 - wait createUserWithEmailAndPassword(authm
+  7 - wait createUserWithEmailAndPassword(auth
   email, senha)
   8 - Promise retorna o value com os dados
   do user.
+  10 - await doc(db,"users,uid)... 
+  11 - .then recebe um objeto com 
+  as informações do 
+     user{uid: uid,
+          nome: name,
+          email: value.user.email,
+          avatarUrl: null,
+          }, para usar através da 
+          state user, os dados do novo
+          usuário cadastrado.
+          Exportou o loadingAuth pelo value.
+  .catch...
+  SignUp
+  1 - Atribui o loadingAuth ao useContext
+  2 - Tranforma o hudleSubmit em async e 
+  o signUp ainda na function adiciona o 
+  wait.
+  3 - Criar uma renderização condicional
+  dentro do botão.
+
+  APOS CADASTRO,REDIRECIONAR PARA DASHBOARD
+  1 - import do RRD o useNavigate
+  2 - Declara a const navigate obtendo
+   o Hook useNavigate()
+  3 - Stância o navigate('/dashboard) dentro do metodo signUp
+  4 - Salvando o user em localStorage
   
 
 
