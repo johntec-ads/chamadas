@@ -14,8 +14,27 @@ function AuthProvider ( { children } ) {/* parâmetro filho para
   repassar dados para todos os componentes */
   const [ user, setUser ] = useState( null );
   const [ loadingAuth, setLoadingAuth ] = useState( false );
+  const [ loading, setLoading ] = useState( true );
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function loadUser() {
+      const storageUser = localStorage.getItem('@ticketsPRO')
+
+      if(storageUser) {//Se localStorage possui dados...
+       //Salva os dados na state setUser
+        setUser(JSON.parse(storageUser))//Convertendo para objeto
+        setLoading(false);
+      }
+
+      setLoading(false)//Caso não passe no if, será finalizado aqui
+
+
+    }
+
+    loadUser()
+  },[])
 
 
   async function signIn ( email, password ) {
@@ -99,7 +118,8 @@ function AuthProvider ( { children } ) {/* parâmetro filho para
         /* export metodos para outros components */
         signIn,
         signUp,
-        loadingAuth,//exportando o loadingAuth para adicionar o efetio visual
+        loadingAuth,//exportando o loadingAuth para adicionar o efeito visual.
+        loading,
 
       } }
 

@@ -175,4 +175,33 @@ LOGANDO USUÁRIO
 2 - Invoca no signIn setLoadingAuth(true)
 3 - async-await signInWithEmailAndPassword(auth,email,password)
 
+CRIANDO ROTAS PRIVADAS
+1 - Na pasta routes cria-se Pirvate.js
+2 - Imports de (useContext-react/
+Navigate-rrd/
+AuthContext-context/auth)
+  3 - Criar o component Private, com o param filho({children})
+  4 - Importar o Private para o component de rotas (RoutesApp)
+  5 - Envolver com a tag <Private> a tag <Dashboard>
+   6 - Importar signed do useContext,para verificar
+   se user logado é true or false.
+   7 - Aplicando condicional para logar na dashboard
+
+   CRIANDO TELA DE LOUDING
+   1 - Dentro de auth.js vamos criar uma state loading declarada como true.
+   2 - Aplica o loading dentro do value.
+   PRIVATE 
+   importa o loading dentro do useContext e 
+   faz uma comparação , se loading for true, renderiza 
+   um div em branco.
+
+   PERMANECER LOGADO 
+   auth.js
+   1 - Aplicando ciclo de vida , useEffect
+   2 - Dentro do useEffect, vamos resgatear o localStorage
+   3 - setUser obtem os dados do localStorage, convertido para 
+   objeto novamente com JSON.parse
+   METODO PARA LOGOUT
+   4 - Criando metodo para logout.
+   5 - importar do firebase/auth o metodo signOut
 
