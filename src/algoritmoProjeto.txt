@@ -201,7 +201,17 @@ AuthContext-context/auth)
    2 - Dentro do useEffect, vamos resgatear o localStorage
    3 - setUser obtem os dados do localStorage, convertido para 
    objeto novamente com JSON.parse
+
    METODO PARA LOGOUT
    4 - Criando metodo para logout.
    5 - importar do firebase/auth o metodo signOut
+
+   DASHBOARD
+   1 - import useContext do react
+   2 - import AuthContext do context/auth
+   3 - Aplica o useContext dentro do component
+   Dashboard, e import o metodo logout do auth.js
+    
+
+   
 

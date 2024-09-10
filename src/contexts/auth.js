@@ -1,6 +1,6 @@
 import { useState, createContext, useEffect } from 'react';
 import { auth, db } from '../services/firebaseConections';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 import { useNavigate } from 'react-router-dom';
@@ -18,23 +18,23 @@ function AuthProvider ( { children } ) {/* parâmetro filho para
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function loadUser() {
-      const storageUser = localStorage.getItem('@ticketsPRO')
+  useEffect( () => {
+    async function loadUser () {
+      const storageUser = localStorage.getItem( '@ticketsPRO' )
 
-      if(storageUser) {//Se localStorage possui dados...
-       //Salva os dados na state setUser
-        setUser(JSON.parse(storageUser))//Convertendo para objeto
-        setLoading(false);
+      if ( storageUser ) {//Se localStorage possui dados...
+        //Salva os dados na state setUser
+        setUser( JSON.parse( storageUser ) )//Convertendo para objeto
+        setLoading( false );
       }
 
-      setLoading(false)//Caso não passe no if, será finalizado aqui
+      setLoading( false )//Caso não passe no if, será finalizado aqui
 
 
     }
 
     loadUser()
-  },[])
+  }, [] )
 
 
   async function signIn ( email, password ) {
@@ -52,18 +52,18 @@ function AuthProvider ( { children } ) {/* parâmetro filho para
           email: value.user.email,
           avatarUrl: docSnap.data().avatarUrl
         }
-        setUser(data);//Passando o objeto para o usuário que esta logando
-        storageUser(data);//Salvando no localStorage
-        setLoadingAuth(false);//Mudando para false
-        toast.success('Bem-vindo(a) de volta!')
-        navigate('/dashboard')//Redirecionando para o dashboard
-      })
-      .catch((error) => {
-        console.log(error);
-        setLoadingAuth(false);
-        toast.error('Ops, algo deu errado!')
+        setUser( data );//Passando o objeto para o usuário que esta logando
+        storageUser( data );//Salvando no localStorage
+        setLoadingAuth( false );//Mudando para false
+        toast.success( 'Bem-vindo(a) de volta!' )
+        navigate( '/dashboard' )//Redirecionando para o dashboard
+      } )
+      .catch( ( error ) => {
+        console.log( error );
+        setLoadingAuth( false );
+        toast.error( 'Ops, algo deu errado!' )
 
-      })
+      } )
 
 
   }
@@ -108,16 +108,23 @@ function AuthProvider ( { children } ) {/* parâmetro filho para
     localStorage.setItem( '@ticketsPRO', JSON.stringify( data ) );
   }
 
+  async function logout() {//Metodo desloga e remove o localStorage
+    await signOut(auth)
+    localStorage.removeItem('@ticketsPRO')//remove storage
+    setUser(null);//Será null,pois não teremos mais informações do usuário.
+    
+  }
+
   return (
     /* provedor de contexto */
     <AuthContext.Provider
       value={ {
-        /* '!!' convert a state em boleano false */
-        signed: !!user,
-        user,
-        /* export metodos para outros components */
+        
+        signed: !!user,/* '!!' convert a state em boleano false */
+        user,/* export metodos para outros components */        
         signIn,
         signUp,
+        logout,
         loadingAuth,//exportando o loadingAuth para adicionar o efeito visual.
         loading,
 
