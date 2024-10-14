@@ -40,7 +40,7 @@ export default function SignIn () {
           />
           <input
             type='password'
-            placeholder='digite sua senha'
+            placeholder='**************'
             value={ password }
             onChange={ ( e ) => setPassword( e.target.value ) }
           />
