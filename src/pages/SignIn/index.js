@@ -14,7 +14,7 @@ export default function SignIn () {
   const { signIn, loadingAuth } = useContext( AuthContext )/* import da function signIn */
 
   async function handleSignIn (e) {
-    e.preventDefault()    
+    e.preventDefault()/* Não permite que carrega a página inteira */
 
     if(email !== ''  && password !== '' ) {/* Condição para dados preenchidos */
      await signIn( email, password   );

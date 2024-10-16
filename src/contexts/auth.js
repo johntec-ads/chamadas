@@ -6,6 +6,7 @@ import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+/* export para a exportanção do context para outros arquivos */
 export const AuthContext = createContext( {} );/* Inicializando
  e exportando o contexto com objeto vazio */
 
@@ -120,8 +121,9 @@ function AuthProvider ( { children } ) {/* parâmetro filho para
     <AuthContext.Provider
       value={ {
         
-        signed: !!user,/* '!!' convert a state em boleano false */
-        user,/* export metodos para outros components */        
+        signed: !!user,/* '!!' convert a state no boleano atual, false ou true  */
+        
+          user,/* export metodos para outros components */        
         signIn,
         signUp,
         logout,
