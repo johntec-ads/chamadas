@@ -28,12 +28,9 @@ function AuthProvider ( { children } ) {/* parâmetro filho para
         setUser( JSON.parse( storageUser ) )//Convertendo para objeto
         setLoading( false );
       }
-
       setLoading( false )//Caso não passe no if, será finalizado aqui
-
-
     }
-
+    
     loadUser()
   }, [] )
 
