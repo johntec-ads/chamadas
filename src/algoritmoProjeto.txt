@@ -212,6 +212,11 @@ AuthContext-context/auth)
    3 - Aplica o useContext dentro do component
    Dashboard, e import o metodo logout do auth.js
     
+    CRIANDO A HEADER
+    1 - Criando component HEADER
+    2 - importando para a Dashboard o component Header
+    3 - importando  img avatar para a Header
+
 
    
 
