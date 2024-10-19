@@ -215,7 +215,14 @@ AuthContext-context/auth)
     CRIANDO A HEADER
     1 - Criando component HEADER
     2 - importando para a Dashboard o component Header
-    3 - importando  img avatar para a Header
+    3 - importando avatarImg para a Header
+    4 - import link do react-router-dom
+    5 - import context verificar se user de tem img
+    6 - import AuthContext do auth.js
+    7 - Consumir o context...e fazer comparação para import img
+    8 - Instalar a Bibliotéca react-icons
+    9 - Import de FiHome, FiUser, FiSettings de react-icons
+    10- import de styles = header.css
 
 
    

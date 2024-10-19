@@ -6,7 +6,7 @@ import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-/* export para a exportanção do context para outros arquivos */
+/* export do context para outros arquivos */
 export const AuthContext = createContext( {} );/* Inicializando
  e exportando o contexto com objeto vazio */
 
