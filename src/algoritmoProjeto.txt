@@ -222,7 +222,20 @@ AuthContext-context/auth)
     7 - Consumir o context...e fazer comparação para import img
     8 - Instalar a Bibliotéca react-icons
     9 - Import de FiHome, FiUser, FiSettings de react-icons
-    10- import de styles = header.css
+    10- import e ediçao de styles/responsividade 
+  
+  Component title:
+    1 - Dentro de pages, criar a pasta Profile com seu index.js e seu style
+    profile.css.
+    2 - Dentro de components, criar o component Profile com seu style
+    3 - Importar para o Route, e adicionar camada Private.
+    4 - Dentro de components, criar o component Title e seu style
+    5 - Criar className title
+    6 - Editar o style
+    7 - importar o Title para o Profile
+    8 - Adicionar uma className content para a div do Title
+    9 - Import do react-icons FiSettings
+    10- Importar para o component Title os dados do Profile, através do children
 
 
    
