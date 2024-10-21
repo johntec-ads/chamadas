@@ -237,6 +237,15 @@ AuthContext-context/auth)
     9 - Import do react-icons FiSettings
     10- Importar para o component Title os dados do Profile, através do children
 
+CRIANDO PERFIL
+    1 - Em Profile criar um div className'container' e um form
+    2 - Importar o avatar.png e icon FiUpload
+    3 - Criar div-label-form para consumir icon e subir arquivo img
+    4 - Import dos Hooks react para declarar useContext e useState
+    5 - Import do AuthContext e consumir auth
+    6 - Editar o style profile.css
+
+
 
    
 
