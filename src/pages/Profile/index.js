@@ -28,9 +28,9 @@ export default function Profile () {
           <form className='form-profile'>
 
             <label className='label-avatar'>              
-              <label>
+              <span>
                 <FiUpload color='#FFF' size={25}/>
-              </label>
+              </span>
 
               <input type='file' accept='image/*'/><br/>
               {avatarUrl === null?(
@@ -41,7 +41,19 @@ export default function Profile () {
 
             </label>
 
+            <label>Nome</label>
+            <input type='text' placeholder='Seu Nome' />
+            
+            <label>Email</label>
+            <input type='text' placeholder='teste@teste.com' disabled={true} />
+
+            <button type='submit'> Salvar </button>
+
           </form>
+        </div>
+
+        <div className='container'>
+          <button className='logout-btn'>Sair</button>
         </div>
       
       </div>
