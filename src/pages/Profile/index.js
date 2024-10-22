@@ -18,6 +18,7 @@ export default function Profile () {
     <div>
       <Header />
       <div className='content' >
+
         <Title name={"Minha conta"}>
           <FiSettings size={25} />
         </Title>
@@ -31,19 +32,16 @@ export default function Profile () {
                 <FiUpload color='#FFF' size={25}/>
               </label>
 
-              <input type='file' accept='image/*'/> <br/>
-              {avatarUrl === null ?(
-                <img src={avatar} alt='Foto de perfil' width={250} height={250} />
+              <input type='file' accept='image/*'/><br/>
+              {avatarUrl === null?(
+                <img src={avatar} alt='Foto de perfil' width={250} height={250}/>
               ) : (
-                <img src={avatarUrl} alt='Foto de perfil' width={250} height={250} />
+                <img src={avatarUrl} alt='Foto de perfil' width={250} height={250}/>
               )}
 
-
             </label>
-            
 
           </form>
-
         </div>
       
       </div>
