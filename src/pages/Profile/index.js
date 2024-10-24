@@ -10,7 +10,7 @@ import './profile.css'
 
 export default function Profile () {
 
-  const { user } = useContext(AuthContext); 
+  const { user, storageUser, serUser } = useContext(AuthContext); 
 
   const [avatarUrl, setAvatarUrl] = useState(user && user.avatarUrl)
 

@@ -126,6 +126,8 @@ function AuthProvider ( { children } ) {/* parâmetro filho para
         logout,
         loadingAuth,//exportando o loadingAuth para adicionar o efeito visual.
         loading,
+        storageUser,
+        setUser,
 
       } }
 

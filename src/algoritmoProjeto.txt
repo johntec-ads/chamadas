@@ -244,6 +244,14 @@ CRIANDO PERFIL
     4 - Import dos Hooks react para declarar useContext e useState
     5 - Import do AuthContext e consumir auth
     6 - Editar o style profile.css
+BUSCANDO DADOS DO PERFIL
+A - Trocar Imagem , enviar dados do input para o firebase
+    1 - No context auth.js Exportar a function storageUser,para usa-la em 
+    quaisquer component, adicionando-a dentro do AuthContext.Provider.
+    2 - É preciso atualizar os dados do user: Exportar o component user 
+    atravéz do AuthContext.Provider.
+    3 - Consumir os dados exportado, No Profile index.js, adicionar adicionar
+    os components storageUser e serUser, para o metodo AuthContext  .
 
 
 
