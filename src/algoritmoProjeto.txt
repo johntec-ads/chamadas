@@ -250,8 +250,19 @@ A - Trocar Imagem , enviar dados do input para o firebase
     quaisquer component, adicionando-a dentro do AuthContext.Provider.
     2 - É preciso atualizar os dados do user: Exportar o component user 
     atravéz do AuthContext.Provider.
-    3 - Consumir os dados exportado, No Profile index.js, adicionar adicionar
-    os components storageUser e serUser, para o metodo AuthContext  .
+
+    3 - No Profile index.js, consumir os dados exportado,  adicionando os 
+    components storageUser e setUser, para o metodo AuthContext  .
+    4 - No Profile, declarar as useStates, nome e email, que irão receber
+    os dados do objetos declarados no context auth.js.
+    5 - Atualizar os input nome e email, com as state declaradas, e os dados
+    que passarem nos inputs, irão atualizar as states.
+    6 - Adicionar no AuthContext.Provider o metodo logout.
+    7 - Inserir no button o metodo onCLick com uma função anônima, e 
+        adicionar o logout na função.
+    8 - Subir image. No input de type file, adicionar um onChange com uma nova
+    função, onChange{handleFile}
+    
 
 
 
