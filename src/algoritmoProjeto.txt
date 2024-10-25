@@ -262,6 +262,17 @@ A - Trocar Imagem , enviar dados do input para o firebase
         adicionar o logout na função.
     8 - Subir image. No input de type file, adicionar um onChange com uma nova
     função, onChange{handleFile}
+    9 - Criar a função handleFile, e em seu escopo, adicionar um if que verifica
+    se e.target.files[0] contém um arquivo image/jpeg || ou image/png.
+    Obs:O files é uma propriedade do objeto target que faz parte do evento disparado 
+    por um elemento <input type="file"> em HTML. 
+    10 - Declarar uma useState de imageAvatar para armazenar o arquivo validado pela 
+    condicional : setImageAvatar(image).
+    11 - Converter o arquivo image com o metodo setAvatarUrl(URL.createObjectURL(image))
+    que em seguida será armazenado na state setAvatarUrl
+    
+    
+    Salvar dados no firebase
     
 
 
