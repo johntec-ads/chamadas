@@ -269,7 +269,14 @@ A - Trocar Imagem , enviar dados do input para o firebase
     10 - Declarar uma useState de imageAvatar para armazenar o arquivo validado pela 
     condicional : setImageAvatar(image).
     11 - Converter o arquivo image com o metodo setAvatarUrl(URL.createObjectURL(image))
-    que em seguida será armazenado na state setAvatarUrl
+    que em seguida será armazenado na state setAvatarUrl.
+  ATUALIZAR DADOS E ENVIAR PARA O FIREBASE
+    1 - Em pages/Profile/index: Dentro do form onde se encontra o botão salvar, vamos
+    criar um manipulador de eventos de formulários onSubmit={handleSubmit}.
+    2 - Na função já criada, vamos verificar em uma condicional, se o user esta apenas
+    digitando apenas o nome, ou também editando foto.
+    3 - Import do firebase/firestore e import do firebaseConections
+    4 - 
     
     
     Salvar dados no firebase

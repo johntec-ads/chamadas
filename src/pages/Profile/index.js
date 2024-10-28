@@ -6,6 +6,9 @@ import { FiSettings, FiUpload } from 'react-icons/fi';
 import avatar from '../../assets/avatar.png';
 import { AuthContext } from '../../contexts/auth';
 
+import {db, storage } from '../../services/firebaseConections'
+import { doc, updateDoc } from 'firebase/firestore';/* Atualiza doc no firebase */
+
 import './profile.css'
 
 export default function Profile () {
@@ -33,8 +36,21 @@ export default function Profile () {
       }
 
 
+    }
+
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+/* se image null e nome diferente de vazio */
+    if(imageAvatar === null && nome !== '' ) {
+      /* Atualiza apenas o nome */
+      const docRef = doc(db, 'users', user.uid)
+      await updateDoc(docRef)
+
 
     }
+   
 
   }
 
@@ -49,7 +65,7 @@ export default function Profile () {
 
         <div className='container'> 
 
-          <form className='form-profile'>
+          <form className='form-profile'onSubmit={handleSubmit} >
 
             <label className='label-avatar'>              
               <span>
@@ -76,6 +92,7 @@ export default function Profile () {
             <button type='submit'> Salvar </button>
 
           </form>
+
         </div>
 
         <div className='container'>
