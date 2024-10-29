@@ -275,11 +275,16 @@ A - Trocar Imagem , enviar dados do input para o firebase
     criar um manipulador de eventos de formulários onSubmit={handleSubmit}.
     2 - Na função já criada, vamos verificar em uma condicional, se o user esta apenas
     digitando apenas o nome, ou também editando foto.
-    3 - Import do firebase/firestore e import do firebaseConections
-    4 - 
-    
-    
-    Salvar dados no firebase
+    3 - Import do firebase/firestore e import do firebaseConections e
+    Salvar dados no firebase.
+
+    CADASTRANDO NOVO CLIENTE.
+    1 - Dentro de pages, declarar Customers/index.js
+    2 - Importar Header
+    3 - Importar Title e seus filhos(children,name)
+    4 - Importar lib {FiUser} react-icons/fi
+    5 - Importar Customer para a routes com rota privada usando o Private
+    6 - Na criação do forms, vamos usar os mesmos estilos do Profile
     
 
 
