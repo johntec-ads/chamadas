@@ -8,6 +8,9 @@ import { AuthContext } from '../../contexts/auth';
 
 import {db, storage } from '../../services/firebaseConections'
 import { doc, updateDoc } from 'firebase/firestore';/* Atualiza doc no firebase */
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+
+import { toast } from 'react-toastify';
 
 import './profile.css'
 
@@ -39,6 +42,44 @@ export default function Profile () {
     }
 
   }
+ 
+  async function handleUpload() {
+    const currentUid = user.uid;
+
+    const uploadRef = ref(storage, `images/${currentUid}/${imageAvatar.name}`)
+
+    const uploadTask = uploadBytes(uploadRef, imageAvatar)
+    .then((snapshot) => {
+
+      getDownloadURL(snapshot.ref).then( async (downloadURL) => {
+        let urlFoto = downloadURL;
+
+        const docRef = doc(db, 'users', user.uid)
+        await updateDoc(docRef, {
+          avatarUrl: urlFoto,
+          nome: nome,
+        })
+        .then(() => {
+          let data = {
+            ...user,
+            nome: nome,
+            avatarUrl: urlFoto,
+          }
+          setUser(data);
+          storageUser(data);
+          toast.success("Atualizado com sucesso!");
+
+        })
+
+      })
+      
+
+    })
+
+  }
+
+
+
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -46,8 +87,23 @@ export default function Profile () {
     if(imageAvatar === null && nome !== '' ) {
       /* Atualiza apenas o nome */
       const docRef = doc(db, 'users', user.uid)
-      await updateDoc(docRef)
+      await updateDoc(docRef,{
+        nome: nome,
+      })
+      .then(() => {
+        let data = {
+          ...user,
+          nome: nome,
+        }
+        setUser(data);
+        storageUser(data);
+        toast.success("Atualizado com sucesso!");
 
+      })
+
+    }else if (nome !== '' && imageAvatar !== null) {
+      /* Atualizar tanto o nome quanto a foto */
+      handleUpload()
 
     }
    
