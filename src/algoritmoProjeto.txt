@@ -284,7 +284,17 @@ A - Trocar Imagem , enviar dados do input para o firebase
     3 - Importar Title e seus filhos(children,name)
     4 - Importar lib {FiUser} react-icons/fi
     5 - Importar Customer para a routes com rota privada usando o Private
-    6 - Na criação do forms, vamos usar os mesmos estilos do Profile
+    6 - Na criação do forms, vamos usar os mesmos estilos do Profile, repetindo
+    a className, criar e repetir os inputs para nome, cnpj e endereço.
+    7 - Import o useState e criar as states para nome, cnpj e endereco.
+    8 - Declarar uma function handleResgister por onSubmit para o form,
+     com a className 'form-profile' para aproveitar os estilos.
+    9 - Declarar a function handleRegister usando e.preventDefault para prevenir
+    o comportamento, pois ela .
+    10 - Dentro da function hundleRegister, faremos um verificação condicional,
+    se nome, cnpj e endereço são diferente de vazio, a function segue o código.
+    11 - Import do firebase/firestore com os metodos addDoc e collection
+
     
 
 

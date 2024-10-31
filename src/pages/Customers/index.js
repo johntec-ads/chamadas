@@ -3,12 +3,24 @@ import Header from '../../components/Header';
 import Title from '../../components/Title';
 
 import { FiUser } from 'react-icons/fi';
+import { addDoc, collection } from 'firebase/firestore';
+
+import { toast } from 'react-toastify';
 
 
 export default function Customers () {
   const [ nome, setNome ] = useState('');
   const [ cnpj, setCnpj ] = useState('');
   const [ endereco, setEndereco ] = useState('');
+
+  function handleRegister(e) {
+    e.preventDefault();
+    if(nome !== '' && cnpj !== '' && endereco !== '') {
+      
+
+    }
+
+  }
 
   return(
     <div>
@@ -21,7 +33,7 @@ export default function Customers () {
       </Title>
 
       <div className='container' >
-        <form className='form-profile' >
+        <form className='form-profile' onSubmit={handleRegister} >
           <label>Nome fantasia</label>
           <input 
             type='text'
@@ -45,6 +57,9 @@ export default function Customers () {
             value={endereco}
             onChange={ (e) => setEndereco(e.target.value) }
           />
+          <button type="submit" >
+            Salvar
+          </button>
 
         </form>
       </div>
