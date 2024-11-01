@@ -3,6 +3,8 @@ import Header from '../../components/Header';
 import Title from '../../components/Title';
 
 import { FiUser } from 'react-icons/fi';
+
+import { db } from '../../services/firebaseConections';
 import { addDoc, collection } from 'firebase/firestore';
 
 import { toast } from 'react-toastify';
@@ -13,11 +15,28 @@ export default function Customers () {
   const [ cnpj, setCnpj ] = useState('');
   const [ endereco, setEndereco ] = useState('');
 
-  function handleRegister(e) {
+  async function handleRegister(e) {
     e.preventDefault();
     if(nome !== '' && cnpj !== '' && endereco !== '') {
-      
-
+      /* Adiciona um documento, gerando um id único e aponta para a coleção */
+      await addDoc(collection(db, "customers"), {
+        /* declara o objeto referenciando as useState */
+        nomeFantasia: nome,
+        cnpj: cnpj,
+        endereco: endereco,
+      })
+      .then(()=> {/* promisse caso de sucesso */
+      setNome('')
+      setCnpj('')
+      setEndereco('')
+      toast.success('Empresa registrada!')
+      })
+      .catch(( error ) => {/* promisse caso de error */
+        console.log(error);
+        toast.error('Erro ao fazer o cadastro.')
+      })
+    }else {
+      toast.error('Preencha todos os campos!')
     }
 
   }

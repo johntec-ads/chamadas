@@ -293,7 +293,9 @@ A - Trocar Imagem , enviar dados do input para o firebase
     o comportamento, pois ela .
     10 - Dentro da function hundleRegister, faremos um verificação condicional,
     se nome, cnpj e endereço são diferente de vazio, a function segue o código.
-    11 - Import do firebase/firestore com os metodos addDoc e collection
+    11 - Import do firebase/firestore com os metodos addDoc e collection.
+    12 - Dentro o if, vamos cadastrar uma nova colection.
+    13 - Após a entrada dos dados, retornar as states vazias e um toast.success
 
     
 
