@@ -306,6 +306,10 @@ DESENVOLVENDO DASHBOARD
     7 - importar o react-route-dom Link, e nele adicionar className'new',
      e um icone FiPlus.
     8 - Estilizar dashboard.css
+    9 - Adicionar mais uma classe ao container "dashboard"
+    10 - Trocar a div container por uma table"tabela"
+    11 - Import dos icones 
+
 
 
 
