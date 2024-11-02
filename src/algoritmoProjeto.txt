@@ -309,6 +309,10 @@ DESENVOLVENDO DASHBOARD
     9 - Adicionar mais uma classe ao container "dashboard"
     10 - Trocar a div container por uma table"tabela"
     11 - Import dos icones 
+    12 - Estilizar a tabela
+
+PÁGINA NOVO CHAMADO
+    1 - 
 
 
 

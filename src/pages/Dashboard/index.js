@@ -28,37 +28,59 @@ export default function Dashboard () {
 
         <>
           <Link to="/new" className='new'>
-            <FiPlus color='#FFF' size={25} />
+            <FiPlus color='#FFF' size={ 25 } />
             Novo chamado
           </Link>
-            <table>
-              <thead>
-                <tr>
-                  <th scope='col' >Cliente</th>
-                  <th scope='col' >Assunto</th>
-                  <th scope='col' >Status</th>
-                  <th scope='col' >Cadastrado em</th>
-                  <th scope='col' >#</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td data-label='Cliente' >Mercado Esquina</td>
-                  <td data-label='Assunto' >Suporte</td>
-                  <td data-label='Status' >Em Aberto</td>
-                  <td data-label='Cadastrado' >12/05/2024</td>
-                  <td data-label='#' >
-                    <button className='action' style={{backgroundColor: '#3583f6'}} >
-                      <FiSearch color='#FFF' size={17} />
-                    </button>
-                    <button className='action' style={{backgroundColor: '#f6a935'}} >
-                      <FiEdit2 color='#FFF' size={17} />
-                    </button>
+          <table>
+            <thead>
+              <tr>
+                <th scope='col' >Cliente</th>
+                <th scope='col' >Assunto</th>
+                <th scope='col' >Status</th>
+                <th scope='col' >Cadastrado em</th>
+                <th scope='col' >#</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label='Cliente' >Mercado Rocha</td>
+                <td data-label='Assunto' >Suporte</td>
+                <td data-label='Status' >
+                  <span className='badge'style={{backgroundColor: '#999'}} >
+                  Em Aberto
+                  </span>
+                </td>
+                <td data-label='Cadastrado' >12/05/2024</td>
+                <td data-label='#' >
+                  <button className='action' style={ { backgroundColor: '#3583f6' } } >
+                    <FiSearch color='#FFF' size={ 17 } />
+                  </button>
+                  <button className='action' style={ { backgroundColor: '#f6a935' } } >
+                    <FiEdit2 color='#FFF' size={ 17 } />
+                  </button>
+                </td>
+              </tr>
 
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+              <tr>
+                <td data-label='Cliente' >InfoTech</td>
+                <td data-label='Assunto' >Suporte</td>
+                <td data-label='Status' >
+                  <span className='badge'style={{backgroundColor: '#999'}} >
+                  Em Aberto
+                  </span>
+                </td>
+                <td data-label='Cadastrado' >12/05/2024</td>
+                <td data-label='#' >
+                  <button className='action' style={ { backgroundColor: '#3583f6' } } >
+                    <FiSearch color='#FFF' size={ 17 } />
+                  </button>
+                  <button className='action' style={ { backgroundColor: '#f6a935' } } >
+                    <FiEdit2 color='#FFF' size={ 17 } />
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </>
 
       </div>
