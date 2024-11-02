@@ -297,7 +297,17 @@ A - Trocar Imagem , enviar dados do input para o firebase
     12 - Dentro o if, vamos cadastrar uma nova colection.
     13 - Após a entrada dos dados, retornar as states vazias e um toast.success
 
-    
+DESENVOLVENDO DASHBOARD
+    1 - Criar a dashboard.css
+    2 - Import do dashboard.css e do component Title
+    4 - No return instanciar className'content' e o component Title
+    5 - Importar os icones 'react-icons/fi' COM O FiPlus e FiMessageSquare
+    6 - Declarar um frimet <> </> e adicionar a div className='container'
+    7 - importar o react-route-dom Link, e nele adicionar className'new',
+     e um icone FiPlus.
+    8 - Estilizar dashboard.css
+
+
 
 
 

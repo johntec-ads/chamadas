@@ -2,21 +2,42 @@ import { useContext } from 'react';
 import { AuthContext } from '../../contexts/auth';
 
 import Header from '../../components/Header';//import do component Header
+import Title from '../../components/Title';
+import { FiPlus, FiMessageSquare } from 'react-icons/fi';
 
-export default function Dashboard() {
-  const { logout } = useContext(AuthContext);  
+import { Link } from 'react-router-dom';
 
-  async function handleLogout() {
+import './dashboard.css';
+
+export default function Dashboard () {
+  const { logout } = useContext( AuthContext );
+
+  async function handleLogout () {
     await logout()
   }
 
 
-  return(
+  return (
     <div>
-      <Header/>
+      <Header />
 
-      <h1>Pagina Dashboard</h1>
-      <button onClick={handleLogout} >Sair da conta</button>
+      <div className='content' >
+        <Title name="Tickets">
+          <FiMessageSquare size={ 25 } />
+        </Title>
+
+        <>
+          <Link to="/new" className='new'>
+            <FiPlus color='#FFF' size={25} />
+            Novo chamado
+          </Link>
+            <div className='container' >
+              <h1>Teste</h1>
+            </div>
+        </>
+
+      </div>
+
     </div>
   )
 }
