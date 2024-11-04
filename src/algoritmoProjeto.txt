@@ -312,7 +312,18 @@ DESENVOLVENDO DASHBOARD
     12 - Estilizar a tabela
 
 PÁGINA NOVO CHAMADO
-    1 - 
+    1 - Em pages, criar a pasta New e seu index.
+    2 - importar os components Header e Title e o estilo new.css
+    3 - Declara no return a Header, uma nova div com a className content
+    para reaproveitar o estilo, e o Title com o elemento name Novo CHAMADO
+    4 - Importar o react-icons/fi com o FiPlusCircle.
+    5 - Chamar o components New em nossas rotas.
+    Criando os inputs e reaproveitar o estilo dos formulários.
+    6 - Dentro do return, declarar uma nova div,reaproveitar a className container
+    , declarar um form e reaproveitar a className form-profile, e seguir com 
+    os formulários.
+    7 - Estilizar o component new
+
 
 
 

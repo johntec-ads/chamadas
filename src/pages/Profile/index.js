@@ -49,7 +49,8 @@ export default function Profile () {
     const uploadRef = ref(storage, `images/${currentUid}/${imageAvatar.name}`)
 
     const uploadTask = uploadBytes(uploadRef, imageAvatar)
-    .then((snapshot) => {
+    
+    .then((snapshot) => {  
 
       getDownloadURL(snapshot.ref).then( async (downloadURL) => {
         let urlFoto = downloadURL;
@@ -77,8 +78,6 @@ export default function Profile () {
     })
 
   }
-
-
 
 
   async function handleSubmit(e) {
