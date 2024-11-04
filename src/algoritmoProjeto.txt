@@ -322,7 +322,21 @@ PÁGINA NOVO CHAMADO
     6 - Dentro do return, declarar uma nova div,reaproveitar a className container
     , declarar um form e reaproveitar a className form-profile, e seguir com 
     os formulários.
-    7 - Estilizar o component new
+    7 - Estilizar o component new.
+    8 - Declarar as useSates para armazenar os dados.
+      A useState customers é para o campo clientes, e recebera uma array de clientes
+      que inicia vazia, e que vai buscar do banco de dados quando for executada.
+      A useState assunto, tem início com o primeiro item do Assunto que é Suporte
+      A useState status, tem início com o primeiro item do status, que é Aberto
+    9 - Complementar os elementos com um value seguido de um onChange que recebe os 
+    valores através de uma função anônima. onChange{(e) =>setState(e.target.valeu)}
+    10 - Em status vamos verificar o valor com checked={true}, e criar uma function
+    onChange={handleOptionChange}, ao qual é atribuida para todos os inputs,E
+    recebe os valores com setStatus(e.target.value).
+    11 - Criar uma condicional para o checked em cada input.
+    checked={status === 'Atendido,'}, e atribui-la para todos os inputs, conforme
+    seu valor
+
 
 
 
