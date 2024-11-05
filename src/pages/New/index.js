@@ -1,30 +1,52 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Title from '../../components/Title';
 import Header from '../../components/Header';
 import { FiPlusCircle } from 'react-icons/fi'
 
+import { AuthContext } from '../../contexts/auth';
+import { db } from '../../services/firebaseConections';
+import { collection, getDocs, getDoc, doc } from 'firebase/firestore';
+
 import './new.css';
 
-export default function New() {
+const listRef = collection(db, 'customers')
 
-  const [ customers, setCustomers ] = useState([]);/*Array p/ lista de cliêntes */
+export default function New () {
+  const { user } = useContext(AuthContext);
 
-  const [ complemento, setComplemento ] = useState('');
-  const [ assunto, setAssunto ] = useState('Suporte');
-  const [ status, setStatus ] = useState('Aberto');
+  const [ customers, setCustomers ] = useState( [] );/*Array p/ lista de cliêntes */
+  const [ loadCustomer, setLoadCustomer ] = useState( true );
 
-  function handleOptionChange(e){
-    setStatus(e.target.value)
+
+  const [ complemento, setComplemento ] = useState( '' );
+  const [ assunto, setAssunto ] = useState( 'Suporte' );
+  const [ status, setStatus ] = useState( 'Aberto' );
+
+  useEffect(() => {
+    async function loadCustomers() {
+      const querySnapshot = await getDocs(listRef)   
+    }
+
+    loadCustomers();
+    
+  }, [])
+
+  function handleOptionChange ( e ) {
+    setStatus( e.target.value )
+  }
+
+  function handleChangeSelect ( e ) {
+    setAssunto( e.target.value );
   }
 
 
-  return(
+  return (
     <div>
-      <Header/>
+      <Header />
 
       <div className='content'>
         <Title name='Novo chamado'>
-          <FiPlusCircle size={25} />
+          <FiPlusCircle size={ 25 } />
         </Title>
 
         <div className='container'>
@@ -32,15 +54,15 @@ export default function New() {
 
             <label>Clientes</label>
             <select>
-              <option key={1} value={1} >Mercado teste</option>              
-              <option key={2} value={2} >Loja informatica</option>              
+              <option key={ 1 } value={ 1 } >Mercado teste</option>
+              <option key={ 2 } value={ 2 } >Loja informatica</option>
             </select>
-            
+
             <label>Assunto</label>
-            <select>
-              <option value='Suporte'>Suporte</option>            
-              <option value='Visita Tecnica'>Visita Tecnica</option>            
-              <option value='Financeiro'>Financeiro</option>            
+            <select value={ assunto } onChange={ handleChangeSelect } >
+              <option value='Suporte'>Suporte</option>
+              <option value='Visita Tecnica'>Visita Tecnica</option>
+              <option value='Financeiro'>Financeiro</option>
             </select>
 
             <label>Status</label>
@@ -49,41 +71,41 @@ export default function New() {
                 type='radio'
                 name='radio'
                 value='Aberto'
-                onChange={handleOptionChange}
-                checked={status === 'Aberto'}
+                onChange={ handleOptionChange }
+                checked={ status === 'Aberto' }
               />
               <span>Em aberto</span>
               <input
                 type='radio'
                 name='radio'
                 value='Progresso'
-                onChange={handleOptionChange}
-                checked={status === 'Progresso'}
+                onChange={ handleOptionChange }
+                checked={ status === 'Progresso' }
               />
               <span>Progresso</span>
               <input
                 type='radio'
                 name='radio'
                 value='Atendido'
-                onChange={handleOptionChange}
-                checked={status === 'Atendido'}
+                onChange={ handleOptionChange }
+                checked={ status === 'Atendido' }
               />
-              <span>Atendido</span>              
+              <span>Atendido</span>
             </div>
 
             <label>Complemento</label>
             <textarea
               type='text'
-              placeholder='Descreva seu problema (opcional).'  
-              value={complemento}
-              onChange={(e) => setComplemento(e.target.value)}            
+              placeholder='Descreva seu problema (opcional).'
+              value={ complemento }
+              onChange={ ( e ) => setComplemento( e.target.value ) }
             />
 
             <button type='submit'>Registrar</button>
 
           </form>
         </div>
-      </div>     
+      </div>
     </div>
   )
 }

@@ -336,6 +336,20 @@ PÁGINA NOVO CHAMADO
     11 - Criar uma condicional para o checked em cada input.
     checked={status === 'Atendido,'}, e atribui-la para todos os inputs, conforme
     seu valor
+    12 - Buscando dados dos clientes: Iniciando com a label assunto,cria-se a 
+    função handleChangeSelect, que recebe o evento cadas vez que a select tiver 
+    alteração, e atualiza a state setAssunto com o select selecionado.
+    13 - Busca dos clientes cadastrados no banco de dados.
+    14 - Import do useEffect para o ciclo de vida, que ao abrir a página, seja 
+    feita a busca dos clientes no banco de dados.
+    15 - Declara a usaState loadCustomer que inicia com true.
+    16 - Importar o context, buscando o AuthContext
+    17 - importar o firebase e importar o firestore
+    18 - Declarar o useEffect, e criar uma async function loadCustomers(){}
+    e dentro da useEffect, para buscar os dados do banco de dados,
+     e instanciar a função dentro da useEffect.
+      
+
 
 
 
