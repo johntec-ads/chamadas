@@ -92,6 +92,12 @@ export default function New () {
     })
     .then(() => {
       toast.success('Chamado registrado!')
+      setComplemento('')
+      setCustomerSelected(0)
+    })
+    .catch((error) => {
+      toast.error('Ops erro ao registrar, tente mais tarde.')
+      console.log(error)
     })
 
   }
