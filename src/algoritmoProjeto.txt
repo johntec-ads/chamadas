@@ -360,6 +360,11 @@ PÁGINA NOVO CHAMADO
     23 - Em seguida, adicionar ao select, um onChange{handleChangeCustomer},e 
     e declarar a funcão.
     24 - Vamos atualizar a setCustomerSelected(e.target.value) com o evento
+    25 - Vamos percorrer nossa lista com customers.map
+
+  CADASTRANDO NOVA COLEÇÃO NO BANCO DE DADOS
+    1 - Dentro do return, no form de className='form-profile', adicionamos
+    um onSubmit(handleRegister)
       
 
 

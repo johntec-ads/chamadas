@@ -5,7 +5,9 @@ import { FiPlusCircle } from 'react-icons/fi'
 
 import { AuthContext } from '../../contexts/auth';
 import { db } from '../../services/firebaseConections';
-import { collection, getDocs, getDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, getDoc, doc, addDoc } from 'firebase/firestore';
+
+import { toast } from 'react-toastify';
 
 import './new.css';
 
@@ -71,8 +73,26 @@ export default function New () {
     setAssunto( e.target.value );
   }
 
-  function handleChangeCustomer(e) {
-    setCustomerSelected(e.target.value)
+  function handleChangeCustomer ( e ) {
+    setCustomerSelected( e.target.value )
+
+  }
+
+   async function handleRegister(e) {
+    e.preventDefault();
+    /* Registrar chamado */
+    await addDoc(collection(db, 'chamados'),{/* criando nova coleção */
+      create: new Date(),/* gera data de origem */
+      cliente: customers[customerSelected].nomeFantasia,
+      clienteId: customers[customerSelected].id,
+      assunto: assunto,
+      complemento: complemento,
+      status: status,
+      userId: user.uid,
+    })
+    .then(() => {
+      toast.success('Chamado registrado!')
+    })
 
   }
 
@@ -87,7 +107,7 @@ export default function New () {
         </Title>
 
         <div className='container'>
-          <form className='form-profile'>
+          <form className='form-profile' onSubmit={handleRegister} >
 
             <label>Clientes</label>
             {
@@ -96,8 +116,15 @@ export default function New () {
                 <input type='text' disabled={ true } value='Carregando...' />
               ) : (
                 /* Se loadCustomer não estiver true */
-                <select value={ customerSelected } onChange={handleChangeCustomer} >
+                <select value={ customerSelected } onChange={ handleChangeCustomer } >
+                  { customers.map( (item, index) => {
+                    return(
+                      <option key={index} value={index} >
+                        { item.nomeFantasia }
+                      </option>
+                    )
 
+                  } ) }
                 </select>
               )
             }
