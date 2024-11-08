@@ -365,7 +365,23 @@ PÁGINA NOVO CHAMADO
   CADASTRANDO NOVA COLEÇÃO NO BANCO DE DADOS
     1 - Dentro do return, no form de className='form-profile', adicionamos
     um onSubmit(handleRegister)
-      
+  ATUALIZAR CHAMADOS NA DASHBOARD
+    1 - page/Dashboard/index: Vamos apagar o segundo elemento
+    de <tr>
+    2 - Importar useEffect e useState: Declarar os estados
+    chamados para armazenar o mesmo, e loading para mostar
+    que esta carregando.
+    3 - Criar uma renderização condicionar para verificar se tem 
+    ou não algum chamado.
+    4 - Após renderizar e estilizar , vamos agora buscar os
+    chamados: Criar o useEffect
+    5 - Dentro do useEffect vamos criar a function assincrona
+    async function loadChamados(){}
+    6 - Na function vamos percorrer nosso array de chamados,para isso vamos importar 
+    import{ collection, getDocs, orderBy, limit, startAfter } from 'firebase/firestore'
+    
+
+
 
 
 
