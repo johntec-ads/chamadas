@@ -378,8 +378,15 @@ PÁGINA NOVO CHAMADO
     5 - Dentro do useEffect vamos criar a function assincrona
     async function loadChamados(){}
     6 - Na function vamos percorrer nosso array de chamados,para isso vamos importar 
-    import{ collection, getDocs, orderBy, limit, startAfter } from 'firebase/firestore'
-    
+    import{ collection, getDocs, orderBy, limit, startAfter, query } from 'firebase/firestore'
+    7 - import { db } from '../../services/firebaseConections'
+    8 - Na function vamos criar uma query para buscar uma lista 
+    ordenada e com limite em quantidade desta lista
+    9 - Criamos a referencia const listRef = collection(db, 'chamados');
+    10 - Criamos um função externa para buscar o querySnapshot, que foi a 
+    variável que recebeu todos dos documentos.
+    11 - 
+
 
 
 

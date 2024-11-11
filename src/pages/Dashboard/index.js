@@ -6,9 +6,12 @@ import Title from '../../components/Title';
 import { FiPlus, FiMessageSquare, FiSearch, FiEdit2 } from 'react-icons/fi';
 
 import { Link } from 'react-router-dom';
-import { collection, getDocs, orderBy, limit, startAfter } from 'firebase/firestore'
+import { collection, getDocs, orderBy, limit, startAfter, query } from 'firebase/firestore'
+import { db } from '../../services/firebaseConections';
 
 import './dashboard.css';
+
+const listRef = collection(db, 'chamados');
 
 export default function Dashboard () {
   const { logout } = useContext( AuthContext );
@@ -17,11 +20,24 @@ export default function Dashboard () {
   const [ loading, setLoading ] = useState( true );
 
   useEffect(() => {
+
     async function loadChamados() {
+      /* Busca de lista por ordem e com limite em quantidade */
+      const q = query(listRef, orderBy('created', 'desc'), limit(5));
+
+      /* Recebendo todos os docs */
+      const querySnapshot = await getDocs(q);
+      await updateState(querySnapshot)
+
+      setLoading(false);
       
     }
     loadChamados()
   }, [])
+
+  async function updateState(querySnapshot) {
+    
+  }
 
   return (
     <div>
