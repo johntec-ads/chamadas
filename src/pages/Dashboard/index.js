@@ -9,34 +9,63 @@ import { Link } from 'react-router-dom';
 import { collection, getDocs, orderBy, limit, startAfter, query } from 'firebase/firestore'
 import { db } from '../../services/firebaseConections';
 
+import { format } from 'date-fns'
+
 import './dashboard.css';
 
-const listRef = collection(db, 'chamados');
+const listRef = collection( db, 'chamados' );
 
 export default function Dashboard () {
   const { logout } = useContext( AuthContext );
 
   const [ chamados, setChamados ] = useState( [] );
   const [ loading, setLoading ] = useState( true );
+  const [ isEmpty, setIsEmpty ] = useState( false );
 
-  useEffect(() => {
+  useEffect( () => {
 
-    async function loadChamados() {
+    async function loadChamados () {
       /* Busca de lista por ordem e com limite em quantidade */
-      const q = query(listRef, orderBy('created', 'desc'), limit(5));
+      const q = query( listRef, orderBy( 'created', 'desc' ), limit( 5 ) );
 
       /* Recebendo todos os docs */
-      const querySnapshot = await getDocs(q);
-      await updateState(querySnapshot)
+      const querySnapshot = await getDocs( q );
+      await updateState( querySnapshot )
 
-      setLoading(false);
-      
+      setLoading( false );
+
     }
     loadChamados()
-  }, [])
 
-  async function updateState(querySnapshot) {
-    
+    return () => { }
+
+
+  }, [] )
+
+  async function updateState ( querySnapshot ) {
+    const isCollectionEmpty = querySnapshot.size === 0;
+
+    if ( !isCollectionEmpty ) {
+      let lista = [];
+
+      querySnapshot.forEach( ( doc ) => {
+        lista.push( {
+          id: doc.id,
+          assunto: doc.data().assunto,
+          cliente: doc.data().cliente,
+          clienteId: doc.data().clienteId,
+          created: doc.data().created,
+          createdFormat: format(doc.data().created.toDate(), 'dd/MM/yyyy'),
+          status: doc.data().status,
+          complemento: doc.data().complemento,
+        } )
+      } )
+      setChamados( chamados => [ ...chamados, ...lista ] )
+
+    } else {
+      setIsEmpty( true );
+
+    }
   }
 
   return (
@@ -76,26 +105,28 @@ export default function Dashboard () {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td data-label='Cliente' >Mercado Rocha</td>
-                    <td data-label='Assunto' >Suporte</td>
-                    <td data-label='Status' >
-                      <span className='badge' style={ { backgroundColor: '#999' } } >
-                        Em Aberto
-                      </span>
-                    </td>
-                    <td data-label='Cadastrado' >12/05/2024</td>
-                    <td data-label='#' >
-                      <button className='action' style={ { backgroundColor: '#3583f6' } } >
-                        <FiSearch color='#FFF' size={ 17 } />
-                      </button>
-                      <button className='action' style={ { backgroundColor: '#f6a935' } } >
-                        <FiEdit2 color='#FFF' size={ 17 } />
-                      </button>
-                    </td>
-                  </tr>
-
-
+                  { chamados.map( (item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td data-label='Cliente' > {item.cliente} </td>
+                        <td data-label='Assunto' > {item.assunto} </td>
+                        <td data-label='Status' >
+                          <span className='badge' style={ { backgroundColor: '#999' } } >
+                            { item.status }
+                          </span>
+                        </td>
+                        <td data-label='Cadastrado'> { item.createdFormat } </td>
+                        <td data-label='#' >
+                          <button className='action' style={ { backgroundColor: '#3583f6' } } >
+                            <FiSearch color='#FFF' size={ 17 } />
+                          </button>
+                          <button className='action' style={ { backgroundColor: '#f6a935' } } >
+                            <FiEdit2 color='#FFF' size={ 17 } />
+                          </button>
+                        </td>
+                      </tr>
+                    )
+                  } ) }
                 </tbody>
               </table>
             </>
