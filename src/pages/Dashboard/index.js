@@ -21,12 +21,14 @@ export default function Dashboard () {
   const { logout } = useContext( AuthContext );
 
   const [ chamados, setChamados ] = useState( [] );
-
   const [ loading, setLoading ] = useState( true );
+
   const [ isEmpty, setIsEmpty ] = useState( false );
+  const [ lastDocs, setLastDocs ] = useState();
+  const [loadingMore, setLoadingMore] = useState(false);
+
 
   useEffect( () => {
-
     async function loadChamados () {
       try {
 
@@ -35,12 +37,13 @@ export default function Dashboard () {
 
         /* Recebendo todos os docs */
         const querySnapshot = await getDocs( q )
+        setChamados( [] );
         /* console.log( 'useEffect querySnapshot', querySnapshot ) */
         await updateState( querySnapshot )
 
         setLoading( false )/* Passa a state para false */
       } catch ( error ) {
-        console.log('Erro ao carregar chamados', error )
+        console.log( 'Erro ao carregar chamados', error )
       }
 
     }
@@ -55,7 +58,7 @@ export default function Dashboard () {
     /* console.log( 'querySnapshot size:', querySnapshot.size ) */
     const isCollectionEmpty = querySnapshot.size === 0;/* recebe true caso  esteja vazia */
 
-    if (!isCollectionEmpty) {/* Se não estiver vazia, segue o bloco do if */
+    if ( !isCollectionEmpty ) {/* Se não estiver vazia, segue o bloco do if */
       let lista = [];
 
       querySnapshot.forEach( ( doc ) => {
@@ -65,7 +68,7 @@ export default function Dashboard () {
           cliente: doc.data().cliente,
           clienteId: doc.data().clienteId,
           create: doc.data().create,
-          createdFormat: format( doc.data().create.toDate(),'dd/MM/yyyy' ),
+          createdFormat: format( doc.data().create.toDate(), 'dd/MM/yyyy' ),
           status: doc.data().status,
           complemento: doc.data().complemento,
         } )
@@ -79,6 +82,25 @@ export default function Dashboard () {
       setIsEmpty( true )
 
     }
+  }
+
+  if ( loading ) {
+    return (
+      <div>
+        <Header />
+
+        <div className='content'>
+          <Title name="Tickets">
+            <FiMessageSquare size={ 25 } />
+          </Title>
+
+          <div className='container dashboard'>
+            <span>Buscando chamados...</span>
+          </div>
+        </div>
+      </div>
+
+    )
   }
 
   return (

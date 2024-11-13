@@ -390,7 +390,20 @@ PÁGINA NOVO CHAMADO
     <React.StrictMode>
     <App />
     </React.StrictMode>
-    deixando somente o <App />.
+    deixando somente o <App />. ou abaixo do const querySnapshot, atualizar a state para vazio. 
+    /* Recebendo todos os docs */
+        const querySnapshot = await getDocs( q )
+        setChamados([]);
+    Obs: o <React.StrictMode> roda somente em desenvolvimento, não roda em build de produção.
+    12 - Criando uma condicional para o loading renderizar buscando chamados.
+
+  BOTÃO PARA BUSCAR MAIS CHAMADOS.
+    1 - useState lastDocs para verificar qual o último item, e loadingMore para mensagem de buscando.
+     
+
+
+    
+      
 
 
 
