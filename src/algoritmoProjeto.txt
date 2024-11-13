@@ -385,7 +385,12 @@ PÁGINA NOVO CHAMADO
     9 - Criamos a referencia const listRef = collection(db, 'chamados');
     10 - Criamos um função externa para buscar o querySnapshot, que foi a 
     variável que recebeu todos dos documentos.
-    11 - 
+    11 - Renderização duplicando:
+    Retirar o 
+    <React.StrictMode>
+    <App />
+    </React.StrictMode>
+    deixando somente o <App />.
 
 
 

@@ -6,46 +6,56 @@ import Title from '../../components/Title';
 import { FiPlus, FiMessageSquare, FiSearch, FiEdit2 } from 'react-icons/fi';
 
 import { Link } from 'react-router-dom';
-import { collection, getDocs, orderBy, limit, startAfter, query } from 'firebase/firestore'
+import { collection, getDocs, orderBy, limit, startAfter, query } from 'firebase/firestore';
 import { db } from '../../services/firebaseConections';
 
-import { format } from 'date-fns'
+import { format } from 'date-fns';
 
 import './dashboard.css';
 
-const listRef = collection( db, 'chamados' );
+const listRef = collection( db, 'chamados' )
+
+
 
 export default function Dashboard () {
   const { logout } = useContext( AuthContext );
 
   const [ chamados, setChamados ] = useState( [] );
+
   const [ loading, setLoading ] = useState( true );
   const [ isEmpty, setIsEmpty ] = useState( false );
 
   useEffect( () => {
 
     async function loadChamados () {
-      /* Busca de lista por ordem e com limite em quantidade */
-      const q = query( listRef, orderBy( 'created', 'desc' ), limit( 5 ) );
+      try {
 
-      /* Recebendo todos os docs */
-      const querySnapshot = await getDocs( q );
-      await updateState( querySnapshot )
+        /* Busca de lista por ordem e com limite em quantidade */
+        const q = query( listRef, orderBy( 'create', 'desc' ), limit( 5 ) );
 
-      setLoading( false );
+        /* Recebendo todos os docs */
+        const querySnapshot = await getDocs( q )
+        /* console.log( 'useEffect querySnapshot', querySnapshot ) */
+        await updateState( querySnapshot )
+
+        setLoading( false )/* Passa a state para false */
+      } catch ( error ) {
+        console.log('Erro ao carregar chamados', error )
+      }
 
     }
-    loadChamados()
+
+    loadChamados();
+    /* console.log( 'Chamados carregados', loadChamados() ) */
 
     return () => { }
-
-
   }, [] )
 
   async function updateState ( querySnapshot ) {
-    const isCollectionEmpty = querySnapshot.size === 0;
+    /* console.log( 'querySnapshot size:', querySnapshot.size ) */
+    const isCollectionEmpty = querySnapshot.size === 0;/* recebe true caso  esteja vazia */
 
-    if ( !isCollectionEmpty ) {
+    if (!isCollectionEmpty) {/* Se não estiver vazia, segue o bloco do if */
       let lista = [];
 
       querySnapshot.forEach( ( doc ) => {
@@ -54,16 +64,19 @@ export default function Dashboard () {
           assunto: doc.data().assunto,
           cliente: doc.data().cliente,
           clienteId: doc.data().clienteId,
-          created: doc.data().created,
-          createdFormat: format(doc.data().created.toDate(), 'dd/MM/yyyy'),
+          create: doc.data().create,
+          createdFormat: format( doc.data().create.toDate(),'dd/MM/yyyy' ),
           status: doc.data().status,
           complemento: doc.data().complemento,
         } )
       } )
-      setChamados( chamados => [ ...chamados, ...lista ] )
+      /* console.log( 'lista de chamados:', lista ) */
+      /* Buscando os chamados existentes e adicinando os novos chamados da lista */
+      setChamados( chamados => [ ...chamados, ...lista ]
+      )
 
-    } else {
-      setIsEmpty( true );
+    } else {/* Se a lista esiver vazia, cai no else */
+      setIsEmpty( true )
 
     }
   }
@@ -81,7 +94,7 @@ export default function Dashboard () {
 
           { chamados.length === 0 ? (/* Se for igual a 0, não tem chamados*/
             <div className='container dashboard' >
-              <span>Nehum chamado encontado... </span>
+              <span>Nehum chamado encontrado... </span>
               <Link to="/new" className='new'>
                 <FiPlus color='#FFF' size={ 25 } />
                 Novo chamado
@@ -105,11 +118,11 @@ export default function Dashboard () {
                   </tr>
                 </thead>
                 <tbody>
-                  { chamados.map( (item, index) => {
+                  { chamados.map( ( item, index ) => {
                     return (
-                      <tr key={index}>
-                        <td data-label='Cliente' > {item.cliente} </td>
-                        <td data-label='Assunto' > {item.assunto} </td>
+                      <tr key={ index }>
+                        <td data-label='Cliente' > { item.cliente } </td>
+                        <td data-label='Assunto' > { item.assunto } </td>
                         <td data-label='Status' >
                           <span className='badge' style={ { backgroundColor: '#999' } } >
                             { item.status }
