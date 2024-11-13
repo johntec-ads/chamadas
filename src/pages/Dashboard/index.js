@@ -25,7 +25,7 @@ export default function Dashboard () {
 
   const [ isEmpty, setIsEmpty ] = useState( false );
   const [ lastDocs, setLastDocs ] = useState();
-  const [loadingMore, setLoadingMore] = useState(false);
+  const [ loadingMore, setLoadingMore ] = useState( false );
 
 
   useEffect( () => {
@@ -75,12 +75,14 @@ export default function Dashboard () {
       } )
       /* console.log( 'lista de chamados:', lista ) */
       /* Buscando os chamados existentes e adicinando os novos chamados da lista */
+      
+      
+      
       setChamados( chamados => [ ...chamados, ...lista ]
       )
 
     } else {/* Se a lista esiver vazia, cai no else */
       setIsEmpty( true )
-
     }
   }
 

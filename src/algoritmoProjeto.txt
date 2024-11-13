@@ -398,7 +398,9 @@ PÁGINA NOVO CHAMADO
     12 - Criando uma condicional para o loading renderizar buscando chamados.
 
   BOTÃO PARA BUSCAR MAIS CHAMADOS.
-    1 - useState lastDocs para verificar qual o último item, e loadingMore para mensagem de buscando.
+    1 - useState lastDocs para verificar qual o último item, e loadingMore para 
+    mensagem de buscando.
+    2 - 
      
 
 
