@@ -159,7 +159,7 @@ export default function Dashboard () {
                         <td data-label='Cliente' > { item.cliente } </td>
                         <td data-label='Assunto' > { item.assunto } </td>
                         <td data-label='Status' >
-                          <span className='badge' style={ { backgroundColor: '#999' } } >
+                          <span className='badge' style={ { backgroundColor: item.status === 'Aberto'?'#5cb85c': '#999' } } >
                             { item.status }
                           </span>
                         </td>
