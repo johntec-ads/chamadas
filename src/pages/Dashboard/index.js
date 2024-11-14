@@ -24,7 +24,7 @@ export default function Dashboard () {
   const [ loading, setLoading ] = useState( true );
 
   const [ isEmpty, setIsEmpty ] = useState( false );
-  const [ lastDocs, setLastDocs ] = useState();
+  const [ lastDoc, setLastDoc ] = useState();
   const [ loadingMore, setLoadingMore ] = useState( false );
 
 
@@ -38,24 +38,23 @@ export default function Dashboard () {
         /* Recebendo todos os docs */
         const querySnapshot = await getDocs( q )
         setChamados( [] );
-        /* console.log( 'useEffect querySnapshot', querySnapshot ) */
+
         await updateState( querySnapshot )
 
         setLoading( false )/* Passa a state para false */
       } catch ( error ) {
-        console.log( 'Erro ao carregar chamados', error )
+        console.log( 'Erro ao carregar chamados', error );
       }
 
     }
 
     loadChamados();
-    /* console.log( 'Chamados carregados', loadChamados() ) */
 
     return () => { }
   }, [] )
 
   async function updateState ( querySnapshot ) {
-    /* console.log( 'querySnapshot size:', querySnapshot.size ) */
+
     const isCollectionEmpty = querySnapshot.size === 0;/* recebe true caso  esteja vazia */
 
     if ( !isCollectionEmpty ) {/* Se não estiver vazia, segue o bloco do if */
@@ -73,17 +72,20 @@ export default function Dashboard () {
           complemento: doc.data().complemento,
         } )
       } )
-      /* console.log( 'lista de chamados:', lista ) */
+
+      /* Pegando o último item. */
+      const lastDoc = querySnapshot.docs[ querySnapshot.docs.length - 1 ];
+      console.log( lastDoc )
+
       /* Buscando os chamados existentes e adicinando os novos chamados da lista */
-      
-      
-      
-      setChamados( chamados => [ ...chamados, ...lista ]
-      )
+      setChamados( chamados => [ ...chamados, ...lista ] );
+      setLastDoc(lastDoc);
 
     } else {/* Se a lista esiver vazia, cai no else */
       setIsEmpty( true )
     }
+
+    setLoadingMore( false );
   }
 
   if ( loading ) {
@@ -103,6 +105,15 @@ export default function Dashboard () {
       </div>
 
     )
+  }
+
+  async function handleMore () {
+    setLoadingMore( true )
+
+    /* Busca de lista por ordem e com limite em quantidade */
+    const q = query( listRef, orderBy( 'create', 'desc' ), startAfter( lastDoc ), limit( 5 ) );
+    const querySnapshot = await getDocs( q );
+    await updateState( querySnapshot );
   }
 
   return (
@@ -166,6 +177,12 @@ export default function Dashboard () {
                   } ) }
                 </tbody>
               </table>
+
+              {/* Condição: Se lodingMore estiver true, renderiza o h3 */ }
+              { loadingMore && <h3>Buscando mais chamados...</h3> }
+              {/* Se loadingMore true e isEmpty estiver oposto de false, renderiza o botão */ }
+              { !loadingMore && !isEmpty && <button className='btn-more' onClick={ handleMore }>Buscar mais</button> }
+
             </>
           ) }
 
