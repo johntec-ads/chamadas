@@ -7,14 +7,16 @@ import { AuthContext } from '../../contexts/auth';
 import { db } from '../../services/firebaseConections';
 import { collection, getDocs, getDoc, doc, addDoc } from 'firebase/firestore';
 
-import { toast } from 'react-toastify';
+import { useParams } from 'react-router-dom';
 
+import { toast } from 'react-toastify';
 import './new.css';
 
 const listRef = collection( db, 'customers' );
 
 export default function New () {
   const { user } = useContext( AuthContext );
+  const { id } = useParams();
 
   const [ customers, setCustomers ] = useState( [] );/*Array p/ lista de cliêntes */
   const [ loadCustomer, setLoadCustomer ] = useState( true );
@@ -26,6 +28,10 @@ export default function New () {
   const [ status, setStatus ] = useState( 'Aberto' );
 
   useEffect( () => {
+
+    console.log(id);
+
+
     async function loadCustomers () {
       const querySnapshot = await getDocs( listRef )
         .then( ( snapshot ) => {/* promisse caso de sucesso */
