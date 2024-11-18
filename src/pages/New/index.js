@@ -135,16 +135,9 @@ export default function New () {
         toast.error('Ops! Erro ao atualizar este chamado.')
         console.log(error);
       })
-
-
       return;
 
     }
-
-
-
-
-
 
     /* Registrar chamado */
     await addDoc( collection( db, 'chamados' ), {/* criando nova coleção */
@@ -167,7 +160,6 @@ export default function New () {
       } )
 
   }
-
 
 
   return (
