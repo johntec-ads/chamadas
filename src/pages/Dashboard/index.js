@@ -13,9 +13,7 @@ import { format } from 'date-fns';
 
 import './dashboard.css';
 
-const listRef = collection( db, 'chamados' )
-
-
+const listRef = collection( db, 'chamados' );
 
 export default function Dashboard () {
   const { logout } = useContext( AuthContext );
@@ -75,7 +73,7 @@ export default function Dashboard () {
 
       /* Pegando o último item. */
       const lastDoc = querySnapshot.docs[ querySnapshot.docs.length - 1 ];
-      console.log( lastDoc )
+      
 
       /* Buscando os chamados existentes e adicinando os novos chamados da lista */
       setChamados( chamados => [ ...chamados, ...lista ] );
@@ -185,12 +183,8 @@ export default function Dashboard () {
 
             </>
           ) }
-
-
         </>
-
       </div>
-
     </div>
   )
 }

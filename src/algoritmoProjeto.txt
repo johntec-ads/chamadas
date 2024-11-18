@@ -400,7 +400,18 @@ PÁGINA NOVO CHAMADO
   BOTÃO PARA BUSCAR MAIS CHAMADOS.
     1 - useState lastDocs para verificar qual o último item, e loadingMore para 
     mensagem de buscando.
-    2 - 
+    2 - Na page/New, importar useParams e o id.
+    3 - Adicionar o id com array de dependências no useEffect.
+    4 - No useEffect, abaixo do setCustomers e setLoadCustomer,vamos verificar com 
+    um if(id) se o mesmo tem algum dados para ser tratado, se for true, então vamos
+    executar a function loadId().
+    5 - Fora do useState vamos Declarar a function loadId, e nela sera feita a busca
+    e atualização dos dados do cliênte id escolhido a ser editado.
+    6 - Criar state para verificar o pedido para edição, idCustomer(true or false)
+    7 - Dentro de handleRegister, abaixo do e.preventDefault, vamos adicionar uma condicional if
+    para se idCustomer true então,vamos atualizar o chamado.
+    8 - Importar o updateDoc do firestore para atualizar os dados.
+    9 - 
      
 
 
