@@ -411,24 +411,10 @@ PÁGINA NOVO CHAMADO
     7 - Dentro de handleRegister, abaixo do e.preventDefault, vamos adicionar uma condicional if
     para se idCustomer true então,vamos atualizar o chamado.
     8 - Importar o updateDoc do firestore para atualizar os dados.
-    9 - 
-     
-
-
     
-      
-
-build para deploy
-
-
-
-
-
-
-
-
-
-
-
-   
-
+CRAINDO MODAL:
+    1 - Criar o component Modal,seu index.js e seu modal.css, e importar 
+    o modal.css para o index, com o comando import './modal.css';
+    2 - importar o Modal para o Dashboard e busca-lo no final do código.
+    3 - Editar o style do Modal
+     
