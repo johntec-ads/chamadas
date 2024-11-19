@@ -25,6 +25,8 @@ function RoutesApp () {
       <Route path='/new' element={ <Private> <New/> </Private> } />
 
       <Route path='/new/:id' element={ <Private> <New/> </Private> } />
+
+     
     </Routes>
   )
 }

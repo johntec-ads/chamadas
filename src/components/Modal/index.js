@@ -11,9 +11,14 @@ export default function Modal () {
         </button>
 
         <main>
-
+          <h2>Detalhes do chamado</h2>
+          
+          <div className='row' >
+            <span>
+              Cliente: <i>Mercado</i>
+            </span>
+          </div>
         </main>
-
       </div>
     </div>
   )
