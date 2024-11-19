@@ -417,4 +417,7 @@ CRAINDO MODAL:
     o modal.css para o index, com o comando import './modal.css';
     2 - importar o Modal para o Dashboard e busca-lo no final do código.
     3 - Editar o style do Modal
+
+Deixando Modal dinâmico:
+    1 - 
      

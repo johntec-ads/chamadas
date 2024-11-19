@@ -12,12 +12,36 @@ export default function Modal () {
 
         <main>
           <h2>Detalhes do chamado</h2>
-          
+
           <div className='row' >
             <span>
               Cliente: <i>Mercado</i>
             </span>
           </div>
+
+          <div className='row' >
+            <span>
+              Assunto: <i>Suporte</i>
+            </span>
+            <span>
+              Cadastrado em : <i>19/11/2024</i>
+            </span>
+          </div>
+
+          <div className='row' >
+            <span>
+              Status: <i>Aberto</i>
+            </span>
+          </div>
+
+          <>
+            <h3>Complemento:</h3>
+            <p>
+              Aqui vai todo o complemento do chamado Aqui vai todo o complemento do chamadoAqui vai todo o complemento do chamadoAqui vai todo o complemento do chamadoAqui vai todo o complemento do chamado
+            </p>
+          </>
+
+
         </main>
       </div>
     </div>
