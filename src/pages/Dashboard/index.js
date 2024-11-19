@@ -26,6 +26,9 @@ export default function Dashboard () {
   const [ lastDoc, setLastDoc ] = useState();
   const [ loadingMore, setLoadingMore ] = useState( false );
 
+  const [ showPostModal, setShowPostModal ] = useState( false );
+  const [ detail, setDeatail ] = useState();
+
 
   useEffect( () => {
     async function loadChamados () {
@@ -74,11 +77,11 @@ export default function Dashboard () {
 
       /* Pegando o último item. */
       const lastDoc = querySnapshot.docs[ querySnapshot.docs.length - 1 ];
-      
+
 
       /* Buscando os chamados existentes e adicinando os novos chamados da lista */
       setChamados( chamados => [ ...chamados, ...lista ] );
-      setLastDoc(lastDoc);
+      setLastDoc( lastDoc );
 
     } else {/* Se a lista esiver vazia, cai no else */
       setIsEmpty( true )
@@ -113,6 +116,11 @@ export default function Dashboard () {
     const q = query( listRef, orderBy( 'create', 'desc' ), startAfter( lastDoc ), limit( 5 ) );
     const querySnapshot = await getDocs( q );
     await updateState( querySnapshot );
+  }
+
+  function toggleModal ( item ) {
+    setShowPostModal( !showPostModal )/* se estiver true torne-se false e vice-versa */
+    setDeatail( item )
   }
 
   return (
@@ -158,16 +166,16 @@ export default function Dashboard () {
                         <td data-label='Cliente' > { item.cliente } </td>
                         <td data-label='Assunto' > { item.assunto } </td>
                         <td data-label='Status' >
-                          <span className='badge' style={ { backgroundColor: item.status === 'Aberto'?'#5cb85c': '#999' } } >
+                          <span className='badge' style={ { backgroundColor: item.status === 'Aberto' ? '#5cb85c' : '#999' } } >
                             { item.status }
                           </span>
                         </td>
                         <td data-label='Cadastrado'> { item.createdFormat } </td>
                         <td data-label='#' >
-                          <button className='action' style={ { backgroundColor: '#3583f6' } } >
+                          <button className='action' style={ { backgroundColor: '#3583f6' } } onClick={ () => toggleModal( item ) } >
                             <FiSearch color='#FFF' size={ 17 } />
                           </button>
-                          <Link to={`/new/${item.id}`} className='action' style={ { backgroundColor: '#f6a935' } } >
+                          <Link to={ `/new/${ item.id }` } className='action' style={ { backgroundColor: '#f6a935' } } >
                             <FiEdit2 color='#FFF' size={ 17 } />
                           </Link>
                         </td>
@@ -187,7 +195,14 @@ export default function Dashboard () {
         </>
       </div>
 
-      <Modal />
+      { showPostModal && (
+        <Modal
+          conteudo={detail}/* recebe o conteúdo */
+          close={() => setShowPostModal(!showPostModal)}/* Se estiver aberto vai para fechado, e vice-versa */
+          
+        />
+      ) }
+
 
 
     </div>

@@ -419,5 +419,40 @@ CRAINDO MODAL:
     3 - Editar o style do Modal
 
 Deixando Modal dinâmico:
-    1 - 
-     
+
+    1 - Em Dashboard: Criar useState showPostModal para controlar o modal, e inicia-la com false
+    pois não vai começar exibindo na tela.
+    2 - Criar um state para pegar os detalhes do item, e repassar para exibir na tela;
+    3 - Criar um renderização condicional para o <Modal/>, quando showPostModal estiver true,
+    será renderizado: {showPostModal && (
+         <Modal />
+      )}
+    4 - No button do seach vamos chamar uma função onClick={() => toggleModal()}, e passar como 
+    parametro o item, que esta sendo chamado pelo map() = onClick={() => toggleModal(item)}
+    5 - Abrindo o modal: Passar o showPostModal para true e enviar para o component Modal
+    o item que recebeu um click.
+
+    6 - EXPLICAÇÃO DO GPT PARA A CONDICIONAL DE NEGAÇÃO PARA toggleModal:
+No seu código, você está usando o `useState` para criar um estado chamado `showPostModal`,
+que começa como `false`. A função `toggleModal` é usada para alternar o valor desse estado entre
+ `true` e `false`.
+
+Aqui está o que acontece passo a passo:
+a. **Estado Inicial**: `showPostModal` começa como `false`.
+b. **Função `toggleModal`**: Quando `toggleModal` é chamada, ela inverte o valor de `showPostModal`.
+ Se `showPostModal` for `false`, ela se torna `true`, e vice-versa.
+c. **Renderização Condicional**: `{ showPostModal && (<Modal />) }` é uma expressão condicional.
+ Se `showPostModal` for `true`, o componente `<Modal />` será renderizado. Se for `false`, nada será 
+ renderizado.
+Então, quando você chama `toggleModal`, você está basicamente dizendo: "Se `showPostModal` for `false`,
+ torne-o `true` e mostre o modal. Se for `true`, torne-o `false` e esconda o modal."
+
+7 - Adicionar a setDetail(item) e passar o item que rebecebeu o click.
+8 - Em seguida vamos ao component Modal dentro da Dashboard, e camos repassar o conteúdo através 
+da propriedade conteudo={detail} que recebe a state detail, e close={() => setShowPostModal(!showPostModal)}
+que reverte o estado.
+9 - EM DASHBOARD: Vamos repassar os dados que foram enviado pelas props, direto no componente.
+export default function Modal ( {conteudo, close} )
+10 - Vamos atribuir a prop close ao botão <button className='close' onClick={close} >
+11 - Agora vamos distribuir os dados do conteudo para a renderização
+
