@@ -31,7 +31,6 @@ export default function New () {
 
 
   useEffect( () => {
-
     async function loadCustomers () {
       /*Removendo o const querySnapshot = */
       await getDocs( listRef )
@@ -43,8 +42,8 @@ export default function New () {
             lista.push( {
               id: doc.id,
               nomeFantasia: doc.data().nomeFantasia
-            } )
-          } )
+            });
+          });
 
           if ( querySnapshot.docs.size === 0 ) {/* verifica se esta vazio */
             console.log( 'NENHUMA EMPRESA ENCONTRADA' );
@@ -62,18 +61,17 @@ export default function New () {
             loadId( lista )
           }
 
-        } )
+        })
         .catch( ( error ) => {/* caso de erro */
           console.log( "Erro ao buscar os clientes", error )
           setLoadCustomer( false );
-          setCustomers(
-            /* Em caso de erro, vamos criar um cliênte fictício */
-            [ { id: '1', nomeFantasia: 'FREELA' } ]
-          )
-        } )
+          setCustomers([ { id: '1', nomeFantasia: 'FREELA' } ])/* Em caso de erro, vamos criar um cliênte fictício */
+        })
     }
-    loadCustomers();
-  }, [ id ] );
+    if(id){
+      loadCustomers();
+    }
+  },[id]);
 
 
   async function loadId ( lista ) {
