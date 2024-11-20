@@ -30,7 +30,7 @@ export default function New () {
   const [ idCustomer, setIdCustomer ] = useState( false );
 
 
-  useEffect( () => {
+  useEffect( ( ) => {
 
     async function loadCustomers () {
       const querySnapshot = await getDocs( listRef )
@@ -72,8 +72,8 @@ export default function New () {
         } )
     }
     loadCustomers();
-
-  }, [ id ]/* array de dependencias */ )
+    
+  }, [ id ] )
 
 
   async function loadId ( lista ) {

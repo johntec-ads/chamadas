@@ -197,13 +197,11 @@ export default function Dashboard () {
 
       { showPostModal && (
         <Modal
-          conteudo={detail}/* recebe o conteúdo */
-          close={() => setShowPostModal(!showPostModal)}/* Se estiver aberto vai para fechado, e vice-versa */
-          
+          conteudo={ detail }/* recebe o conteúdo */
+          close={ () => setShowPostModal( !showPostModal ) }/* Se estiver aberto vai para fechado, e vice-versa */
+
         />
       ) }
-
-
 
     </div>
   )
