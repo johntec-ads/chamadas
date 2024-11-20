@@ -34,18 +34,18 @@ export default function New () {
 
     async function loadCustomers () {
       const querySnapshot = await getDocs( listRef )
-        .then( ( snapshot ) => {/* promisse caso de sucesso */
+        .then( ( querySnapshot ) => {/* promisse caso de sucesso */
           /* percorre o docs buscando o id e ref, e adiciona para useState customers */
           let lista = [];
 
-          snapshot.forEach( ( doc ) => {/*repassa todos os documentos*/
+          querySnapshot.forEach( ( doc ) => {/*repassa todos os documentos*/
             lista.push( {
               id: doc.id,
               nomeFantasia: doc.data().nomeFantasia
             } )
           } )
 
-          if ( snapshot.docs.size === 0 ) {/* verifica se esta vazio */
+          if ( querySnapshot.docs.size === 0 ) {/* verifica se esta vazio */
             console.log( 'NENHUMA EMPRESA ENCONTRADA' );
             /* se vazio, preenche com cliênte fictício */
             setCustomers( [ { id: '1', nomeFantasia: 'FREELA' } ] )
@@ -71,9 +71,8 @@ export default function New () {
           )
         } )
     }
-    loadCustomers();
-    
-  }, [ id ] )
+    loadCustomers();    
+  }, [id] );
 
 
   async function loadId ( lista ) {
