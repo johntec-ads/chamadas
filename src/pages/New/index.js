@@ -71,7 +71,7 @@ export default function New () {
     if(id){
       loadCustomers();
     }
-  },[id, loadId ] );
+  },[id] );
 
 
   async function loadId ( lista ) {
