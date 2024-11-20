@@ -455,4 +455,5 @@ que reverte o estado.
 export default function Modal ( {conteudo, close} )
 10 - Vamos atribuir a prop close ao botão <button className='close' onClick={close} >
 11 - Agora vamos distribuir os dados do conteudo para a renderização
+FINAL DE PROJETO
 
