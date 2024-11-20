@@ -17,7 +17,7 @@ import './dashboard.css';
 const listRef = collection( db, 'chamados' );
 
 export default function Dashboard () {
-  const { logout } = useContext( AuthContext );
+  /* const { logout } = */ useContext( AuthContext );
 
   const [ chamados, setChamados ] = useState( [] );
   const [ loading, setLoading ] = useState( true );
