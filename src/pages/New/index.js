@@ -30,10 +30,11 @@ export default function New () {
   const [ idCustomer, setIdCustomer ] = useState( false );
 
 
-  useEffect( ( ) => {
+  useEffect( () => {
 
     async function loadCustomers () {
-      const querySnapshot = await getDocs( listRef )
+      /*Removendo o const querySnapshot = */
+      await getDocs( listRef )
         .then( ( querySnapshot ) => {/* promisse caso de sucesso */
           /* percorre o docs buscando o id e ref, e adiciona para useState customers */
           let lista = [];
@@ -71,8 +72,8 @@ export default function New () {
           )
         } )
     }
-    loadCustomers();    
-  }, [id] );
+    loadCustomers();
+  }, [ id ] );
 
 
   async function loadId ( lista ) {
@@ -124,16 +125,16 @@ export default function New () {
         status: status,
         userId: user.uid,
       } )
-      .then(() => {
-        toast.info('Chamado atualizado com sucesso!')
-        setCustomerSelected(0);
-        setComplemento('');
-        navigate('/dashboard');
-      })
-      .catch((error) => {
-        toast.error('Ops! Erro ao atualizar este chamado.')
-        console.log(error);
-      })
+        .then( () => {
+          toast.info( 'Chamado atualizado com sucesso!' )
+          setCustomerSelected( 0 );
+          setComplemento( '' );
+          navigate( '/dashboard' );
+        } )
+        .catch( ( error ) => {
+          toast.error( 'Ops! Erro ao atualizar este chamado.' )
+          console.log( error );
+        } )
       return;
 
     }
@@ -166,7 +167,7 @@ export default function New () {
       <Header />
 
       <div className='content'>
-        <Title name={id ? 'Editando chamado' : 'Novo chamado'}>
+        <Title name={ id ? 'Editando chamado' : 'Novo chamado' }>
           <FiPlusCircle size={ 25 } />
         </Title>
 
