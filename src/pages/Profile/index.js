@@ -48,7 +48,7 @@ export default function Profile () {
 
     const uploadRef = ref(storage, `images/${currentUid}/${imageAvatar.name}`)
 
-    const uploadTask = uploadBytes(uploadRef, imageAvatar)
+    /* const uploadTask = */ uploadBytes(uploadRef, imageAvatar)
     
     .then((snapshot) => {  
 
@@ -83,11 +83,12 @@ export default function Profile () {
   async function handleSubmit(e) {
     e.preventDefault();
 /* se image null e nome diferente de vazio */
-    if(imageAvatar === null && nome !== '' ) {
+    if(imageAvatar === null && nome !== '' && email !== '' ) {
       /* Atualiza apenas o nome */
       const docRef = doc(db, 'users', user.uid)
       await updateDoc(docRef,{
         nome: nome,
+        email: email,
       })
       .then(() => {
         let data = {
@@ -142,7 +143,10 @@ export default function Profile () {
              em caso seja editada */}
             
             <label>Email</label>
-            <input type='text' value={email} disabled={true} />
+            <input type='text' value={email} disabled={true}
+                    onChange={(e) => setEmail(e.target.value)} 
+            
+            />
 
             <button type='submit'> Salvar </button>
 
