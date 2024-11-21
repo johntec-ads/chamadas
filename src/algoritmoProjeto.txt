@@ -456,3 +456,6 @@ export default function Modal ( {conteudo, close} )
 10 - Vamos atribuir a prop close ao botão <button className='close' onClick={close} >
 11 - Agora vamos distribuir os dados do conteudo para a renderização
 
+RECUPERANDO COMMIT DO GITHUB
+git checkout hash OU SHA (Secure Hash Algorithm)
+git checkout 49682c898b049bef67f23a2f32ee1697ecae4ce6
