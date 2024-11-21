@@ -31,7 +31,7 @@ export default function New () {
 
 
 
-  const loadId = useCallback( async( lista ) => {
+  const loadId = useCallback( async( lista ) => {   
     const docRef = doc( db, "chamados", id )/* Receber um único chamado ref ao id */
     await getDoc( docRef ) /* busca com getDoc, através da referência docRef  */
       .then( ( snapshot ) => {/* sucesso */
@@ -43,16 +43,12 @@ export default function New () {
         let index = lista.findIndex( item => item.id === snapshot.data().clienteId );
         setCustomerSelected( index );
         setIdCustomer( true );
-
-
       } )
       .catch( ( error ) => {/* falha */
         console.log( error );
         setIdCustomer( false );
       } );
   }, [id])
-
-
 
 
 
