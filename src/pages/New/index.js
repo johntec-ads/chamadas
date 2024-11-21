@@ -170,7 +170,7 @@ export default function New () {
       <Header />
 
       <div className='content'>
-        <Title name={ id ? 'Editando chamado' : 'Novo chamado' }>
+        <Title name={id ? 'Editando chamado' : 'Novo chamado...'}>
           <FiPlusCircle size={ 25 } />
         </Title>
 

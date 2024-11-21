@@ -457,3 +457,7 @@ export default function Modal ( {conteudo, close} )
 11 - Agora vamos distribuir os dados do conteudo para a renderização
 FINAL DE PROJETO
 
+RECUPERANDO COMMIT DO GITHUB
+git checkout hash OU SHA (Secure Hash Algorithm)
+git checkout 49682c898b049bef67f23a2f32ee1697ecae4ce6
+A
