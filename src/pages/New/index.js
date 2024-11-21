@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useCallback } from 'react';
 import Title from '../../components/Title';
 import Header from '../../components/Header';
 import { FiPlusCircle } from 'react-icons/fi'
@@ -30,51 +30,8 @@ export default function New () {
   const [ idCustomer, setIdCustomer ] = useState( false );
 
 
-  useEffect( () => {
-    async function loadCustomers () {
-      /*Removendo o const querySnapshot = */
-      await getDocs( listRef )
-        .then( ( querySnapshot ) => {/* promisse caso de sucesso */
-          /* percorre o docs buscando o id e ref, e adiciona para useState customers */
-          let lista = [];
 
-          querySnapshot.forEach( ( doc ) => {/*repassa todos os documentos*/
-            lista.push( {
-              id: doc.id,
-              nomeFantasia: doc.data().nomeFantasia
-            });
-          });
-
-          if ( querySnapshot.docs.size === 0 ) {/* verifica se esta vazio */
-            console.log( 'NENHUMA EMPRESA ENCONTRADA' );
-            /* se vazio, preenche com cliênte fictício */
-            setCustomers( [ { id: '1', nomeFantasia: 'FREELA' } ] )
-            setLoadCustomer( false );
-            return;/* para o código. */
-          }
-
-          /* Encontrou os itens */
-          setCustomers( lista );/* atualiza a lista */
-          setLoadCustomer( false );/* para o código */
-
-          if ( id ) {
-            loadId( lista )
-          }
-
-        })
-        .catch( ( error ) => {/* caso de erro */
-          console.log( "Erro ao buscar os clientes", error )
-          setLoadCustomer( false );
-          setCustomers([ { id: '1', nomeFantasia: 'FREELA' } ])/* Em caso de erro, vamos criar um cliênte fictício */
-        })
-    }
-    if(id){
-      loadCustomers();
-    }
-  },[id] );
-
-
-  async function loadId ( lista ) {
+  const loadId = useCallback( async( lista ) => {
     const docRef = doc( db, "chamados", id )/* Receber um único chamado ref ao id */
     await getDoc( docRef ) /* busca com getDoc, através da referência docRef  */
       .then( ( snapshot ) => {/* sucesso */
@@ -92,8 +49,60 @@ export default function New () {
       .catch( ( error ) => {/* falha */
         console.log( error );
         setIdCustomer( false );
-      } )
-  }
+      } );
+  }, [id])
+
+
+
+
+
+  useEffect( () => {
+    async function loadCustomers () {
+      /*Removendo o const querySnapshot = */
+      await getDocs( listRef )
+        .then( ( querySnapshot ) => {/* promisse caso de sucesso */
+          /* percorre o docs buscando o id e ref, e adiciona para useState customers */
+          let lista = [];
+
+          querySnapshot.forEach( ( doc ) => {/*repassa todos os documentos*/
+            lista.push( {
+              id: doc.id,
+              nomeFantasia: doc.data().nomeFantasia
+            } );
+          } );
+
+          if ( querySnapshot.docs.size === 0 ) {/* verifica se esta vazio */
+            console.log( 'NENHUMA EMPRESA ENCONTRADA' );
+            /* se vazio, preenche com cliênte fictício */
+            setCustomers( [ { id: '1', nomeFantasia: 'FREELA' } ] )
+            setLoadCustomer( false );
+            return;/* para o código. */
+          }
+
+          /* Encontrou os itens */
+          setCustomers( lista );/* atualiza a lista */
+          setLoadCustomer( false );/* para o código */
+
+          if ( id ) {
+            loadId( lista )
+          }
+
+        } )
+        .catch( ( error ) => {/* caso de erro */
+          console.log( "Erro ao buscar os clientes", error )
+          setLoadCustomer( false );
+          setCustomers( [ { id: '1', nomeFantasia: 'FREELA' } ] )/* Em caso de erro, vamos criar um cliênte fictício */
+        } )
+    }
+    if ( id ) {
+      loadCustomers();
+    }
+
+  }, [ id, loadId ] );
+
+
+
+  
 
   function handleOptionChange ( e ) {
     setStatus( e.target.value )
