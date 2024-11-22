@@ -458,4 +458,4 @@ export default function Modal ( {conteudo, close} )
 
 RECUPERANDO COMMIT DO GITHUB
 git checkout 49682c898b049bef67f23a2f32ee1697ecae4ce6
-
+ atualizando run build
